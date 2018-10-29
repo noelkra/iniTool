@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="iniTool.AboutUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:iniTool"
+             mc:Ignorable="d" Width="495">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="305*"/>
+            <RowDefinition Height="94*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Margin="140,10,140,0" TextWrapping="Wrap" Grid.Row="1" TextAlignment="Center" FontSize="14" Height="37.24" VerticalAlignment="Top"><Run Text="Licenced under GNU GPLv3."/><LineBreak/><Run Text="Icons by icons8 (www.icons8.com)"/></TextBlock>
+        <Image Height="295" Margin="10,10,10,0" VerticalAlignment="Top" Source="img/info.png"/>
+
+    </Grid>
+</UserControl>
