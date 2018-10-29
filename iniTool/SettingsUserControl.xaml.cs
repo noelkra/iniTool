@@ -27,15 +27,15 @@ namespace iniTool
         }
         private void btnSaveSettings_Click(object sender, RoutedEventArgs e)
         {
-            resEdit.setModulesIniFile(tbModulesIniFile.Text);
-            resEdit.setRootModulesDir(tbRootModulesDir.Text);
-            resEdit.setRootSpecsDir(tbRootSpecsDir.Text);
+            resEdit.SetModulesIniFile(tbModulesIniFile.Text);
+            resEdit.SetRootModulesDir(tbRootModulesDir.Text);
+            resEdit.SetRootSpecsDir(tbRootSpecsDir.Text);
         }
         private void settingsUserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            tbRootSpecsDir.Text = resEdit.getRootSpecsDir();
-            tbRootModulesDir.Text = resEdit.getRootModulesDir();
-            tbModulesIniFile.Text = resEdit.getModulesIniFile();
+            tbRootSpecsDir.Text = resEdit.GetRootSpecsDir();
+            tbRootModulesDir.Text = resEdit.GetRootModulesDir();
+            tbModulesIniFile.Text = resEdit.GetModulesIniFile();
         }
     }
 }

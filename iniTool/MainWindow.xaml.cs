@@ -17,40 +17,50 @@ namespace iniTool
         {
             InitializeComponent();
         } 
-        private void miOpenLastWorkspace_Click(object sender, RoutedEventArgs e) //TODO remove if not needed
+        private void MiOpenLastWorkspace_Click(object sender, RoutedEventArgs e) //TODO remove if not needed
         {
             //dgListFiles.ItemsSource = null;
-            //dgListFiles.ItemsSource = fileHandler.getContentFromFiles(resEdit.getWorkspace().ToString());
+            //dgListFiles.ItemsSource = fileHandler.GetContentFromFiles(resEdit.getWorkspace().ToString());
         }
-        private void btnAbout_Click(object sender, RoutedEventArgs e)
+        private void BtnAbout_Click(object sender, RoutedEventArgs e)
         {
             ucMain.Visibility = Visibility.Hidden;
             ucSettings.Visibility = Visibility.Hidden;
             ucAbout.Visibility = Visibility.Visible;
         }
-        private void btnSettings_Click(object sender, RoutedEventArgs e)
+        private void BtnSettings_Click(object sender, RoutedEventArgs e)
         {
             ucMain.Visibility = Visibility.Hidden;
             ucSettings.Visibility = Visibility.Visible;
             ucAbout.Visibility = Visibility.Hidden;
         }
-        private void btnMain_Click(object sender, RoutedEventArgs e)
+        private void BtnMain_Click(object sender, RoutedEventArgs e)
         {
             ucMain.Visibility = Visibility.Visible;
             ucSettings.Visibility = Visibility.Hidden;
             ucAbout.Visibility = Visibility.Hidden;
         }
-        private void btnOpenNewWorkspace_Click(object sender, RoutedEventArgs e)
+        private void BtnOpenNewWorkspace_Click(object sender, RoutedEventArgs e)
         {
             mainUserControl.openFiles();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            if(!resEdit.getPreferencesStatus())
+            if(!resEdit.GetPreferencesStatus())
             {
-                resEdit.setDefaultPreferences();
+                resEdit.SetDefaultPreferences();
             }
+        }
+
+        private void Window_LostFocus(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void Window_GotFocus(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

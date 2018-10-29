@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:iniTool"
         xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing" x:Class="iniTool.MainWindow"
         mc:Ignorable="d"
-        Title="iniTool" Height="500" Width="1042.667" Icon="img/master.png" WindowStartupLocation="CenterScreen" MinHeight="500" MinWidth="700" Loaded="Window_Loaded">
+        Title="iniTool" Height="500" Width="1042.667" Icon="img/master.png" WindowStartupLocation="CenterScreen" MinHeight="500" MinWidth="700" Loaded="Window_Loaded" LostFocus="Window_LostFocus" GotFocus="Window_GotFocus">
     <Window.TaskbarItemInfo>
         <TaskbarItemInfo Description="iniTool"/>
     </Window.TaskbarItemInfo>
@@ -19,22 +19,22 @@
             <StackPanel.Effect>
                 <DropShadowEffect Direction="0" BlurRadius="4" ShadowDepth="3" Color="#FF9D9D9D"/>
             </StackPanel.Effect>
-            <Button x:Name="btnMain" Height="{Binding ActualWidth, ElementName=btnMain}" Width="Auto" BorderBrush="{x:Null}" Foreground="{x:Null}" Style="{DynamicResource FlatUIMenuButton}" Click="btnMain_Click">
+            <Button x:Name="btnMain" Height="{Binding ActualWidth, ElementName=btnMain}" Width="Auto" BorderBrush="{x:Null}" Foreground="{x:Null}" Style="{DynamicResource FlatUIMenuButton}" Click="BtnMain_Click">
                 <Button.Background>
                     <ImageBrush ImageSource="img/icons8-home-1024.png"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="btnOpenNewWorkspace" Height="{Binding ActualWidth, ElementName=btnOpenNewWorkspace}" Style="{DynamicResource FlatUIMenuButton}" Width="Auto" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="btnOpenNewWorkspace_Click">
+            <Button x:Name="btnOpenNewWorkspace" Height="{Binding ActualWidth, ElementName=btnOpenNewWorkspace}" Style="{DynamicResource FlatUIMenuButton}" Width="Auto" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="BtnOpenNewWorkspace_Click">
                 <Button.Background>
                     <ImageBrush ImageSource="img/icons8-opened-folder-1024.png"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="btnSettings" Height="{Binding ActualWidth, ElementName=btnSettings}" Style="{DynamicResource FlatUIMenuButton}" Width="Auto" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="btnSettings_Click">
+            <Button x:Name="btnSettings" Height="{Binding ActualWidth, ElementName=btnSettings}" Style="{DynamicResource FlatUIMenuButton}" Width="Auto" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="BtnSettings_Click">
                 <Button.Background>
                     <ImageBrush ImageSource="img/icons8-services-1024.png"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="btnAbout" Height="{Binding ActualWidth, ElementName=btnAbout}" Style="{DynamicResource FlatUIMenuButton}" Width="Auto" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="btnAbout_Click">
+            <Button x:Name="btnAbout" Height="{Binding ActualWidth, ElementName=btnAbout}" Style="{DynamicResource FlatUIMenuButton}" Width="Auto" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="BtnAbout_Click">
                 <Button.Background>
                     <ImageBrush ImageSource="img/icons8-about-1024.png"/>
                 </Button.Background>

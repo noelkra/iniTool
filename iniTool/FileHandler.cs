@@ -17,7 +17,7 @@ namespace iniTool
         /// </summary>
         /// <PARAM name="dir"></PARAM>
         /// Path to Directory
-        public List<Content> getContentFromFiles(string dir) //TODO shorten and split into multiple methods
+        public List<Content> GetContentFromFiles(string dir) //TODO shorten and split into multiple methods
         {
             contentList.Clear();
             //Variables for temporary saved content from the .ini files
@@ -41,9 +41,9 @@ namespace iniTool
             ArrayList pathToFile = new ArrayList();
 
             //Get correct values
-            correctRootSpecsDir = resEdit.getRootSpecsDir();
-            correctRootModulesDir = resEdit.getRootModulesDir();
-            correctModulesIniFile = resEdit.getModulesIniFile();
+            correctRootSpecsDir = resEdit.GetRootSpecsDir();
+            correctRootModulesDir = resEdit.GetRootModulesDir();
+            correctModulesIniFile = resEdit.GetModulesIniFile();
             if (fileArray != null)
             {
 
@@ -93,14 +93,14 @@ namespace iniTool
             }
             return contentList;
         }
-        public void repairFiles()
+        public void RepairFiles()
         {
-            //TODO many things same as in getContentFromFiles (Maybe combine to new Method?)
+            //TODO many things same as in GetContentFromFiles (Maybe combine to new Method?)
             string tempRootSpecsDir, tempRootModulesDir, tempModulesIniFile;
 
-            string correctRootSpecsDir = resEdit.getRootSpecsDir();
-            string correctRootModulesDir = resEdit.getRootModulesDir();
-            string correctModulesIniFile = resEdit.getModulesIniFile();
+            string correctRootSpecsDir = resEdit.GetRootSpecsDir();
+            string correctRootModulesDir = resEdit.GetRootModulesDir();
+            string correctModulesIniFile = resEdit.GetModulesIniFile();
             //Get path for all files that need to get changed
             foreach (string path in incorrectFiles)
             {

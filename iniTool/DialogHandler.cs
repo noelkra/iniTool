@@ -11,7 +11,7 @@ namespace iniTool
         /// </summary>
         /// <returns name="dir"></returns>
         /// Returns the path of the chosen Folder
-        public string openFolderDialog()
+        public string OpenFolderDialog()
         {
             string dir;
 

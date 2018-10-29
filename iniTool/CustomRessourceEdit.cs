@@ -12,7 +12,7 @@ namespace iniTool
         /// </summary>
         /// <returns name="workspacePath"></returns>
         /// Returns the path.
-        public string getWorkspace()
+        public string GetWorkspace()
         {
             string workspacePath = iniHandler.IniReadValue("GENERAL", "workspacePath");
 
@@ -32,7 +32,7 @@ namespace iniTool
         /// </summary>
         /// <param name="dir"></param>
         /// Path to the Workspace
-        public void setWorkspace(string dir)
+        public void SetWorkspace(string dir)
         {
             try
             {
@@ -49,7 +49,7 @@ namespace iniTool
         /// </summary>
         /// <returns name="rootSpecsDir"></returns>
         /// Returns the path.
-        public string getRootSpecsDir()
+        public string GetRootSpecsDir()
         {
             string rootSpecsDir = iniHandler.IniReadValue("PATHVALUES", "Root_Specs_Dir");
 
@@ -69,7 +69,7 @@ namespace iniTool
         /// </summary>
         /// <param name="dir"></param>
         /// Path of Root_Specs_Dir
-        public void setRootSpecsDir(string dir)
+        public void SetRootSpecsDir(string dir)
         {
             iniHandler.IniWriteValue("PATHVALUES", "Root_Specs_Dir", dir);
         }
@@ -79,7 +79,7 @@ namespace iniTool
         /// </summary>
         /// <returns name="rootModulesDir"></returns>
         /// Returns the path.
-        public string getRootModulesDir()
+        public string GetRootModulesDir()
         {
             string rootModulesDir = iniHandler.IniReadValue("PATHVALUES", "Root_Modules_Dir");
 
@@ -99,7 +99,7 @@ namespace iniTool
         /// </summary>
         /// <param name="dir"></param>
         /// Path of Root_Modules_Dir
-        public void setRootModulesDir(string dir)
+        public void SetRootModulesDir(string dir)
         {
             iniHandler.IniWriteValue("PATHVALUES", "Root_Modules_Dir", dir);
         }
@@ -109,7 +109,7 @@ namespace iniTool
         /// </summary>
         /// <returns name="modulesIniFile"></returns>
         /// Returns the path.
-        public string getModulesIniFile()
+        public string GetModulesIniFile()
         {
             string modulesIniFile = iniHandler.IniReadValue("PATHVALUES", "Modules_Ini_File");
 
@@ -129,7 +129,7 @@ namespace iniTool
         /// </summary>
         /// <param name="dir"></param>
         /// Path of Modules_Ini_File
-        public void setModulesIniFile(string dir)
+        public void SetModulesIniFile(string dir)
         {
             iniHandler.IniWriteValue("PATHVALUES", "Modules_Ini_File", dir);
         }
@@ -137,15 +137,15 @@ namespace iniTool
         /// <summary>
         /// Sets isPreferencesLoaded to true
         /// </summary>
-        public void setPreferencesStatus()
+        public void SetPreferencesStatus()
         {
             iniHandler.IniWriteValue("APPLICATION_DO_NOT_EDIT", "isPreferencesLoaded", "true");
         }
 
         /// <summary>
-        /// Gets the Status of isPreferencesLoaded
+        /// Gets the Value of isPreferencesLoaded
         /// </summary>
-        public bool getPreferencesStatus()
+        public bool GetPreferencesStatus()
         {
             string status = iniHandler.IniReadValue("APPLICATION_DO_NOT_EDIT", "isPreferencesLoaded");
             if (status == "true")
@@ -161,12 +161,12 @@ namespace iniTool
         /// <summary>
         /// Creates a preferences.ini file and adds default values
         /// </summary>
-        public void setDefaultPreferences()
+        public void SetDefaultPreferences()
         {
-            setModulesIniFile(@"%CUSTOM_ROOT_PROD%\modules\modules.ini");
-            setRootModulesDir(@"%CUSTOM_ROOT_PROD%\modules");
-            setRootSpecsDir(@"%CUSTOM_ROOT_PROD%\Specs\Metric");
-            setPreferencesStatus();
+            SetModulesIniFile(@"%CUSTOM_ROOT_PROD%\modules\modules.ini");
+            SetRootModulesDir(@"%CUSTOM_ROOT_PROD%\modules");
+            SetRootSpecsDir(@"%CUSTOM_ROOT_PROD%\Specs\Metric");
+            SetPreferencesStatus();
         }
     }
 }

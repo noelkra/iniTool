@@ -23,20 +23,20 @@ namespace iniTool
             MessageBoxResult result = MessageBox.Show("This operation cannot be undone. Are you sure you want to continue?", "Confirm action", MessageBoxButton.YesNo);
             if (result == MessageBoxResult.Yes)
             {
-                fileHandler.repairFiles();
+                fileHandler.RepairFiles();
             }
         }
         public void openFiles()
         {
-            string dir = dialogHandler.openFolderDialog();
+            string dir = dialogHandler.OpenFolderDialog();
             //If folder chosen successfully, save to regx file and activate btnOpenInExplorer
             if (dir != null && dir != "")
             {
                 setLoading(true);
                 //Dispatcher.BeginInvoke(new Action(() => { MessageBox.Show(this, "Workspace is loading. Please be patient as it can take up to 2 minutes.", "Please wait...", MessageBoxButton.OK, MessageBoxImage.Information); })); 
-                resEdit.setWorkspace(dir);
+                resEdit.SetWorkspace(dir);
                 dgListFiles.ItemsSource = null;
-                dgListFiles.ItemsSource = fileHandler.getContentFromFiles(dir);
+                dgListFiles.ItemsSource = fileHandler.GetContentFromFiles(dir);
                 setLoading(false);
             }
         }
