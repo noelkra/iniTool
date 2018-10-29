@@ -47,5 +47,13 @@ namespace iniTool
         {
             mainUserControl.openFiles();
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            if(!resEdit.getPreferencesStatus())
+            {
+                resEdit.setDefaultPreferences();
+            }
+        }
     }
 }

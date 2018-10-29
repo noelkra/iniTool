@@ -152,9 +152,7 @@
     <Resource Include="img\icons8-opened-folder-1024.png" />
     <Resource Include="img\icons8-services-1024.png" />
     <Resource Include="img\icons8-home-1024.png" />
-    <Content Include="preferences.ini">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="preferences.ini" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">

@@ -133,5 +133,40 @@ namespace iniTool
         {
             iniHandler.IniWriteValue("PATHVALUES", "Modules_Ini_File", dir);
         }
+
+        /// <summary>
+        /// Sets isPreferencesLoaded to true
+        /// </summary>
+        public void setPreferencesStatus()
+        {
+            iniHandler.IniWriteValue("APPLICATION_DO_NOT_EDIT", "isPreferencesLoaded", "true");
+        }
+
+        /// <summary>
+        /// Gets the Status of isPreferencesLoaded
+        /// </summary>
+        public bool getPreferencesStatus()
+        {
+            string status =  iniHandler.IniReadValue("APPLICATION_DO_NOT_EDIT", "isPreferencesLoaded");
+            if(status == "true")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Creates a preferences.ini file and adds default values
+        /// </summary>
+        public void setDefaultPreferences()
+        {
+            setModulesIniFile(@"%CUSTOM_ROOT_PROD%\modules\modules.ini");
+            setRootModulesDir(@"%CUSTOM_ROOT_PROD%\modules");
+            setRootSpecsDir(@"%CUSTOM_ROOT_PROD%\Specs\Metric");
+            setPreferencesStatus();
+        }
     }
 }
