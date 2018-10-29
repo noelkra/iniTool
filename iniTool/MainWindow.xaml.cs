@@ -1,7 +1,4 @@
-﻿using System;
-using System.Deployment.Application;
-using System.Windows;
-using System.Windows.Input;
+﻿using System.Windows;
 
 namespace iniTool
 {

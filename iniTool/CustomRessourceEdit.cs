@@ -16,7 +16,7 @@ namespace iniTool
         {
             string workspacePath = iniHandler.IniReadValue("GENERAL", "workspacePath");
 
-            if(workspacePath != null && workspacePath != "")
+            if (workspacePath != null && workspacePath != "")
             {
                 return workspacePath;
             }
@@ -36,14 +36,14 @@ namespace iniTool
         {
             try
             {
-                iniHandler.IniWriteValue("GENERAL","workspacePath", dir);
+                iniHandler.IniWriteValue("GENERAL", "workspacePath", dir);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show("Oops, something went wrong! Error: " + ex, "Error",MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Oops, something went wrong! Error: " + ex, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-        
+
         /// <summary>
         /// Get the path from Root_Specs_Dir
         /// </summary>
@@ -147,8 +147,8 @@ namespace iniTool
         /// </summary>
         public bool getPreferencesStatus()
         {
-            string status =  iniHandler.IniReadValue("APPLICATION_DO_NOT_EDIT", "isPreferencesLoaded");
-            if(status == "true")
+            string status = iniHandler.IniReadValue("APPLICATION_DO_NOT_EDIT", "isPreferencesLoaded");
+            if (status == "true")
             {
                 return true;
             }
