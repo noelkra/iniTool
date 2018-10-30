@@ -147,11 +147,11 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-    <Resource Include="img\info.png" />
     <Resource Include="img\icons8-about-1024.png" />
     <Resource Include="img\icons8-opened-folder-1024.png" />
     <Resource Include="img\icons8-services-1024.png" />
     <Resource Include="img\icons8-home-1024.png" />
+    <Resource Include="img\info.png" />
     <Content Include="preferences.ini" />
   </ItemGroup>
   <ItemGroup>

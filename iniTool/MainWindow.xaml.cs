@@ -52,15 +52,5 @@ namespace iniTool
                 resEdit.SetDefaultPreferences();
             }
         }
-
-        private void Window_LostFocus(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
-        private void Window_GotFocus(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

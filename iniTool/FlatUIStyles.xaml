@@ -19,6 +19,8 @@
     <SolidColorBrush x:Key="highlight.orange" Color="#FFFF9B32"/>
     <SolidColorBrush x:Key="highlight.lightgreen" Color="#FFE6E100"/>
     <SolidColorBrush x:Key="highlight.lightblue" Color="#FF87C8F0"/>
+    <SolidColorBrush x:Key="greyscale.eightyfive" Color="#FF262626"/>
+    <SolidColorBrush x:Key="greyscale.fourtyfive" Color="#FF8C8C8C"/>
 
     <!-- Static color brushes -->
     <SolidColorBrush x:Key="Button.Disabled" Color="#FFF4F4F4"/>
