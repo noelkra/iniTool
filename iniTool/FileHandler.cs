@@ -9,7 +9,7 @@ namespace iniTool
     class FileHandler
     {
         //Declaration
-        private static List<Content> contentList = new List<Content>();
+        public static List<Content> contentList = new List<Content>();
         private CustomRessourceEdit resEdit = new CustomRessourceEdit();
         private ArrayList incorrectFiles = new ArrayList();
 
@@ -18,7 +18,7 @@ namespace iniTool
         /// </summary>
         /// <PARAM name="dir"></PARAM>
         /// Path to Directory
-        public void setContentFromFiles(string dir) //TODO shorten and split into multiple methods
+        public List<Content> GetContentFromFiles(string dir) //TODO shorten and split into multiple methods
         {
             contentList.Clear();
             //Variables for temporary saved content from the .ini files
@@ -70,11 +70,26 @@ namespace iniTool
                         }
                         else { tempIsChecked = false; }
 
+
+                        contentList.Add(new Content()
+                        {
+                            folderPath = directory,
+                            isChecked = tempIsChecked,
+                            projectName = tempProjectName ?? "NoInformation",
+                            projectID = tempProjectID ?? "NoInformation",
+                            projectGUID = tempProjectGUID ?? "NoInformation",
+                            pwProject = tempPWProject ?? "NoInformation",
+                            pwProjectGUID = tempPWProjectGUID ?? "NoInformation",
+                            rootSpecsDir = tempRootSpecsDir ?? "NoInformation",
+                            rootModulesDir = tempRootModulesDir ?? "NoInformation",
+                            modulesIniFile = tempModulesIniFile ?? "NoInformation"
+                        });
                         //Add content to contentList
-                        setContentList(directory, tempIsChecked, tempProjectName, tempProjectID, tempProjectGUID, tempPWProject, tempPWProjectGUID, tempRootSpecsDir, tempRootModulesDir, tempModulesIniFile);
+                        //setContentList(directory, tempIsChecked, tempProjectName, tempProjectID, tempProjectGUID, tempPWProject, tempPWProjectGUID, tempRootSpecsDir, tempRootModulesDir, tempModulesIniFile);
                     }
                 }
             }
+            return contentList;
         }
         /// <summary>
         /// Changes the files content and therefore repairs it.
@@ -129,6 +144,7 @@ namespace iniTool
             return contentList; //TODO remove just for testing
         }
 
+        //TODO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         /// <summary>
         /// Adds the entity to the ContentList
         /// </summary>

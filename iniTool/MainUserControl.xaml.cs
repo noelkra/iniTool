@@ -37,11 +37,12 @@ namespace iniTool
                 setLoading(true);
                 //Dispatcher.BeginInvoke(new Action(() => { MessageBox.Show(this, "Workspace is loading. Please be patient as it can take up to 2 minutes.", "Please wait...", MessageBoxButton.OK, MessageBoxImage.Information); })); 
                 resEdit.SetWorkspace(dir);
-                fileHandler.setContentFromFiles(dir);
                 dgListFiles.ItemsSource = null;
-                List<Content> list = fileHandler.getContentList();
-                dgListFiles.ItemsSource = list;
+                List<iniTool.Content> cont = new List<iniTool.Content>();
+                cont = fileHandler.GetContentFromFiles(dir);
+                dgListFiles.ItemsSource = cont;
                 setLoading(false);
+                //TODO Get the error :)
             }
         }
         private void setLoading(bool loading)
