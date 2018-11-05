@@ -29,7 +29,8 @@ namespace iniTool
         public void openFiles()
         {
             string dir = dialogHandler.OpenFolderDialog();
-            //If folder chosen successfully, save to regx file and activate btnOpenInExplorer
+            //If folder chosen successfully, save to ini-file
+            //TODO Enable button to open in explorer and uncomment the Information dispatcher ↓↓↓↓
             if (dir != null && dir != "")
             {
                 setLoading(true);

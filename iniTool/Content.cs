@@ -4,6 +4,7 @@ namespace iniTool
 {
     class Content
     {
+        public string folderPath { get; set; }
         public string projectName { get; set; }
         public string projectID { get; set; }
         public string projectGUID { get; set; }

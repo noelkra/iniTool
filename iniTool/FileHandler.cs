@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows;
@@ -8,7 +9,7 @@ namespace iniTool
     class FileHandler
     {
         //Declaration
-        private List<Content> contentList = new List<Content>();
+        private static List<Content> contentList = new List<Content>();
         private CustomRessourceEdit resEdit = new CustomRessourceEdit();
         private ArrayList incorrectFiles = new ArrayList();
 
@@ -78,6 +79,7 @@ namespace iniTool
                         //Add content to contentList
                         contentList.Add(new Content()
                         {
+                            folderPath = directory,
                             isChecked = tempIsChecked,
                             projectName = tempProjectName ?? "NoInformation",
                             projectID = tempProjectID ?? "NoInformation",
@@ -93,6 +95,9 @@ namespace iniTool
             }
             return contentList;
         }
+        /// <summary>
+        /// Changes the files content and therefore repairs it.
+        /// </summary>
         public void RepairFiles()
         {
             //TODO many things same as in GetContentFromFiles (Maybe combine to new Method?)
@@ -111,7 +116,6 @@ namespace iniTool
                 
                 //Get which variable needs to get changed
 
-
                 if (tempRootSpecsDir != correctRootSpecsDir) 
                 {
                     configIniHandler.IniWriteValue("System", "Root_Specs_Dir", correctRootSpecsDir);
@@ -124,8 +128,15 @@ namespace iniTool
                 {
                     configIniHandler.IniWriteValue("System", "Modules_Ini_File", correctModulesIniFile);
                 }
-                //Change variable
             }
+        }
+
+        /// <summary>
+        /// Gets the checked entries in the DataGrid and returns them
+        /// </summary>
+        private void getIsChecked()
+        {
+            throw new NotImplementedException();
         }
     }
 }
