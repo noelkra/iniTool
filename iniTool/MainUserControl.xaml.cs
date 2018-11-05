@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -36,8 +37,10 @@ namespace iniTool
                 setLoading(true);
                 //Dispatcher.BeginInvoke(new Action(() => { MessageBox.Show(this, "Workspace is loading. Please be patient as it can take up to 2 minutes.", "Please wait...", MessageBoxButton.OK, MessageBoxImage.Information); })); 
                 resEdit.SetWorkspace(dir);
+                fileHandler.setContentFromFiles(dir);
                 dgListFiles.ItemsSource = null;
-                dgListFiles.ItemsSource = fileHandler.GetContentFromFiles(dir);
+                List<Content> list = fileHandler.getContentList();
+                dgListFiles.ItemsSource = list;
                 setLoading(false);
             }
         }

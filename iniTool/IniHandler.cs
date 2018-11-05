@@ -47,7 +47,6 @@ namespace iniTool
         /// </summary>
         /// <PARAM name="Section"></PARAM>
         /// <PARAM name="Key"></PARAM>
-        /// <PARAM name="Path"></PARAM>
         /// <returns></returns>
         public string IniReadValue(string Section, string Key)
         {
