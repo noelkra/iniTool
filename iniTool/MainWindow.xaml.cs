@@ -12,7 +12,6 @@ namespace iniTool
         DialogHandler dialogHandler = new DialogHandler();
         CustomRessourceEdit resEdit = new CustomRessourceEdit();
         SettingsUserControl settingsUserControl = new SettingsUserControl();
-        MainUserControl mainUserControl = new MainUserControl();
         
         public MainWindow()
         {
@@ -46,7 +45,7 @@ namespace iniTool
             openFiles();
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void Window_Loaded(object sender, System.EventArgs e)
         {
             if(!resEdit.GetPreferencesStatus())
             {
