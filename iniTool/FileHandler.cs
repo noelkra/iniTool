@@ -9,7 +9,7 @@ namespace iniTool
     class FileHandler
     {
         //Declaration
-        public static List<Content> contentList = new List<Content>();
+        private List<Content> contentList = new List<Content>();
         private CustomRessourceEdit resEdit = new CustomRessourceEdit();
         private ArrayList incorrectFiles = new ArrayList();
 
@@ -18,7 +18,7 @@ namespace iniTool
         /// </summary>
         /// <PARAM name="dir"></PARAM>
         /// Path to Directory
-        public List<Content> GetContentFromFiles(string dir) //TODO shorten and split into multiple methods
+        public void LoadFileContent(string dir) //TODO shorten and split into multiple methods
         {
             contentList.Clear();
             //Variables for temporary saved content from the .ini files
@@ -77,22 +77,10 @@ namespace iniTool
                         else { tempIsChecked = false; }
 
                         //Add content to contentList
-                        contentList.Add(new Content()
-                        {
-                            isChecked = tempIsChecked,
-                            projectName = tempProjectName ?? "NoInformation",
-                            projectID = tempProjectID ?? "NoInformation",
-                            projectGUID = tempProjectGUID ?? "NoInformation",
-                            pwProject = tempPWProject ?? "NoInformation",
-                            pwProjectGUID = tempPWProjectGUID ?? "NoInformation",
-                            rootSpecsDir = tempRootSpecsDir ?? "NoInformation",
-                            rootModulesDir = tempRootModulesDir ?? "NoInformation",
-                            modulesIniFile = tempModulesIniFile ?? "NoInformation"
-                        });
+                        setContentList(directory, tempIsChecked, tempProjectName, tempProjectID, tempProjectGUID, tempPWProject, tempPWProjectGUID, tempRootSpecsDir, tempRootModulesDir, tempModulesIniFile);
                     }
                 }
             }
-            return contentList;
         }
         /// <summary>
         /// Changes the files content and therefore repairs it.
@@ -142,7 +130,7 @@ namespace iniTool
         /// Returns the contentList
         /// </summary>
         /// <returns></returns>
-        public List<Content> getContentList()
+        public List<Content> getFileContent()
         {
             return contentList;
         }
@@ -150,7 +138,7 @@ namespace iniTool
         /// <summary>
         /// Adds the entity to the ContentList
         /// </summary>
-        public void setContentList(string directory, bool tempIsChecked, string tempProjectName, string tempProjectID, string tempProjectGUID, string tempPWProject, string tempPWProjectGUID, string tempRootSpecsDir, string tempRootModulesDir, string tempModulesIniFile)
+        private void setContentList(string directory, bool tempIsChecked, string tempProjectName, string tempProjectID, string tempProjectGUID, string tempPWProject, string tempPWProjectGUID, string tempRootSpecsDir, string tempRootModulesDir, string tempModulesIniFile)
         {
             contentList.Add(new Content()
             {
