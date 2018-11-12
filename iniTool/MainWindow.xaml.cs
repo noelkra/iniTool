@@ -12,15 +12,10 @@ namespace iniTool
         DialogHandler dialogHandler = new DialogHandler();
         CustomRessourceEdit resEdit = new CustomRessourceEdit();
         SettingsUserControl settingsUserControl = new SettingsUserControl();
-        
+
         public MainWindow()
         {
             InitializeComponent();
-        } 
-        private void MiOpenLastWorkspace_Click(object sender, RoutedEventArgs e) //TODO remove if not needed
-        {
-            //dgListFiles.ItemsSource = null;
-            //dgListFiles.ItemsSource = fileHandler.GetContentFromFiles(resEdit.getWorkspace().ToString());
         }
         private void BtnAbout_Click(object sender, RoutedEventArgs e)
         {
@@ -42,12 +37,15 @@ namespace iniTool
         }
         private void BtnOpenNewWorkspace_Click(object sender, RoutedEventArgs e)
         {
-            openFiles();
+            //If folder chosen successfully, save to ini-file
+            string dir = dialogHandler.OpenFolderDialog();
+            resEdit.SetWorkspace(dir);
+            openFiles(dir);
         }
 
         private void Window_Loaded(object sender, System.EventArgs e)
         {
-            if(!resEdit.GetPreferencesStatus())
+            if (!resEdit.GetPreferencesStatus())
             {
                 resEdit.SetDefaultPreferences();
             }
@@ -57,21 +55,21 @@ namespace iniTool
             MessageBoxResult result = MessageBox.Show("This operation cannot be undone. Are you sure you want to continue?", "Confirm action", MessageBoxButton.YesNo);
             if (result == MessageBoxResult.Yes)
             {
+                //Repair the Files and reload them afterwards.
                 fileHandler.RepairFiles();
+                openFiles(resEdit.GetWorkspace());
             }
         }
-        public void openFiles()
+        public void openFiles(string dir)
         {
-            string dir = dialogHandler.OpenFolderDialog();
-            //If folder chosen successfully, save to ini-file
             //TODO Enable button to open in explorer and uncomment the Information dispatcher ↓↓↓↓
             if (dir != null && dir != "")
             {
                 setLoading(true);
+                fileHandler.LoadFileContent(dir);
                 //Dispatcher.BeginInvoke(new Action(() => { MessageBox.Show(this, "Workspace is loading. Please be patient as it can take up to 2 minutes.", "Please wait...", MessageBoxButton.OK, MessageBoxImage.Information); })); 
-                resEdit.SetWorkspace(dir);
                 dgListFileContent.ItemsSource = null;
-                dgListFileContent.ItemsSource = fileHandler.GetContentFromFiles(dir);
+                dgListFileContent.ItemsSource = fileHandler.getFileContent();
                 setLoading(false);
             }
         }
