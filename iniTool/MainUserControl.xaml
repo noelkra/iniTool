@@ -1,25 +1,11 @@
 ﻿<UserControl x:Class="iniTool.MainUserControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:iniTool"
-             mc:Ignorable="d">
+             mc:Ignorable="d" Width="983" Height="469">
     <Grid>
-        <DataGrid x:Name="dgListFiles" Margin="10,36.28,55.001,103.72" AlternationCount="2" AutoGenerateColumns="False" CanUserAddRows="false" ItemsSource="{Binding ''}" MinRowHeight="20">
-            <DataGrid.Columns>
-                <DataGridCheckBoxColumn Header="Repair" Binding="{Binding isChecked, UpdateSourceTrigger=PropertyChanged}"/>
-                <DataGridTextColumn Header="Project Name" Binding="{Binding projectName}" Width="2.5*" />
-                <DataGridTextColumn Header="ID" Binding="{Binding projectID}" Width="1*"/>
-                <DataGridTextColumn Header="GUID" Binding="{Binding projectGUID}" Width="3*"/>
-                <DataGridTextColumn Header="PWProject" Binding="{Binding pwProject}" Width="3*"/>
-                <DataGridTextColumn Header="PWProject GUID" Binding="{Binding pwProjectGUID}" Width="3*"/>
-                <DataGridTextColumn Header="Root_Specs_Dir" Binding="{Binding rootSpecsDir}" Width="3*"/>
-                <DataGridTextColumn Header="Root_Modules_Dir" Binding="{Binding rootModulesDir}" Width="3*"/>
-                <DataGridTextColumn Header="Modules_Ini_File" Binding="{Binding modulesIniFile}" Width="3*"/>
-            </DataGrid.Columns>
-        </DataGrid>
-        <Button x:Name="btnConfirmAction" Content="Confirm Changes" Margin="0,0,55.001,10" VerticalAlignment="Bottom" Style="{DynamicResource FlatUIButton}" Click="btnConfirmAction_Click" Width="150" HorizontalAlignment="Right"/>
-        <Label x:Name="lblEditFilesTitle" Content="Edit Files" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top" FontSize="16"/>
+      
     </Grid>
 </UserControl>

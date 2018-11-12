@@ -27,6 +27,7 @@ namespace iniTool
             int increment = 0;
 
             //Variables for the correct Values
+            string correctRootSpecsDir, correctRootModulesDir, correctModulesIniFile;
             string[] fileArray = null;
             //Get all Directories
             dir += @"\";
@@ -34,14 +35,19 @@ namespace iniTool
             {
                 fileArray = Directory.GetDirectories(dir);
             }
-            catch(DirectoryNotFoundException dnfEX)
+            catch (DirectoryNotFoundException dnfEX)
             {
                 MessageBox.Show("Directory could not be found! Error: " + dnfEX, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+            ArrayList pathToFile = new ArrayList();
 
             //Get correct values
+            correctRootSpecsDir = resEdit.GetRootSpecsDir();
+            correctRootModulesDir = resEdit.GetRootModulesDir();
+            correctModulesIniFile = resEdit.GetModulesIniFile();
             if (fileArray != null)
             {
+
                 foreach (string directory in fileArray)
                 {
                     if (directory.Substring(dir.Length, 4) == ("Proj")) //TODO add support for folders with different names and folders missing files
@@ -63,17 +69,16 @@ namespace iniTool
                         tempModulesIniFile = configIniHandler.IniReadValue("System", "Modules_Ini_File");
 
                         //Search for files
-                        if (tempRootSpecsDir != resEdit.GetRootSpecsDir() || tempRootModulesDir != resEdit.GetRootModulesDir() || tempModulesIniFile != resEdit.GetModulesIniFile()) //MODULES INI FILE
+                        if (tempRootSpecsDir != correctRootSpecsDir || tempRootModulesDir != correctRootModulesDir || tempModulesIniFile != correctModulesIniFile) //MODULES INI FILE
                         {
                             tempIsChecked = true;
                             incorrectFiles.Add(directory + @"\Config\config.ini");
                         }
                         else { tempIsChecked = false; }
 
-
+                        //Add content to contentList
                         contentList.Add(new Content()
                         {
-                            folderPath = directory,
                             isChecked = tempIsChecked,
                             projectName = tempProjectName ?? "NoInformation",
                             projectID = tempProjectID ?? "NoInformation",
@@ -84,8 +89,6 @@ namespace iniTool
                             rootModulesDir = tempRootModulesDir ?? "NoInformation",
                             modulesIniFile = tempModulesIniFile ?? "NoInformation"
                         });
-                        //Add content to contentList
-                        //setContentList(directory, tempIsChecked, tempProjectName, tempProjectID, tempProjectGUID, tempPWProject, tempPWProjectGUID, tempRootSpecsDir, tempRootModulesDir, tempModulesIniFile);
                     }
                 }
             }
@@ -141,10 +144,9 @@ namespace iniTool
         /// <returns></returns>
         public List<Content> getContentList()
         {
-            return contentList; //TODO remove just for testing
+            return contentList;
         }
 
-        //TODO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         /// <summary>
         /// Adds the entity to the ContentList
         /// </summary>
