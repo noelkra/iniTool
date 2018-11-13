@@ -99,9 +99,6 @@ namespace iniTool
         /// </summary>
         public void RepairFiles()
         {
-            //TODO many things same as in GetContentFromFiles (Maybe combine to new Method?)
-            string tempRootSpecsDir, tempRootModulesDir, tempModulesIniFile;
-
             //Get path for all files that need to get changed
             foreach (string path in incorrectFiles)
             {
@@ -132,6 +129,7 @@ namespace iniTool
         /// </summary>
         private void getIsChecked()
         {
+            //TODO User should can choose which files to change.
             throw new NotImplementedException();
         }
 
