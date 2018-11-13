@@ -21,6 +21,7 @@
     <SolidColorBrush x:Key="highlight.lightblue" Color="#FF87C8F0"/>
     <SolidColorBrush x:Key="greyscale.eightyfive" Color="#FF262626"/>
     <SolidColorBrush x:Key="greyscale.fourtyfive" Color="#FF8C8C8C"/>
+    <SolidColorBrush x:Key="event.pressed" Color="#FF004466"/>
 
     <!-- Static color brushes -->
     <SolidColorBrush x:Key="Button.Disabled" Color="#FFF4F4F4"/>
@@ -56,8 +57,8 @@
                             <Setter Property="Foreground" Value="White"/>
                         </Trigger>
                         <Trigger Property="IsPressed" Value="true">
-                            <Setter Property="Background" TargetName="border" Value="{StaticResource primary.deepblue}"/>
-                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource primary.deepblue}"/>
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource event.pressed}"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource event.pressed}"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled}"/>
