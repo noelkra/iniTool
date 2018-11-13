@@ -10,7 +10,7 @@ namespace iniTool
     */
     class IniHandler 
     {
-        public string path;
+        private string path;
 
         [DllImport("KERNEL32.DLL")]
         private static extern long WritePrivateProfileString(string section,
