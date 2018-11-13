@@ -15,13 +15,17 @@ namespace iniTool
         private string correctRootSpecsDir;
         private string correctRootModulesDir;
         private string correctModulesIniFile;
-        
+        private ArrayList pathToFile;
+        private string tempProjectName, tempProjectID, tempProjectGUID, tempPWProject, tempPWProjectGUID, tempRootSpecsDir, tempRootModulesDir, tempModulesIniFile;
+        private bool tempIsChecked;
+
         //Constructor
         public FileHandler()
         {
             resEdit = new RessourceEdit();
             incorrectFiles = new ArrayList();
             contentList = new List<Content>();
+            pathToFile = new ArrayList();
             correctRootSpecsDir = resEdit.GetRootSpecsDir();
             correctRootModulesDir = resEdit.GetRootModulesDir();
             correctModulesIniFile = resEdit.GetModulesIniFile();
@@ -35,9 +39,8 @@ namespace iniTool
         {
             contentList.Clear();
             //Variables for temporary saved content from the .ini files
-            string tempProjectName, tempProjectID, tempProjectGUID, tempPWProject, tempPWProjectGUID, tempRootSpecsDir, tempRootModulesDir, tempModulesIniFile;
-            bool tempIsChecked;
             int increment = 0;
+            string prefix = resEdit.GetPrefix();
 
             //Variables for the correct Values
             string[] fileArray = null;
@@ -51,16 +54,14 @@ namespace iniTool
             {
                 MessageBox.Show("Directory could not be found! Error: " + dnfEX, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            ArrayList pathToFile = new ArrayList();
 
             //Get correct values
-
             if (fileArray != null)
             {
 
                 foreach (string directory in fileArray)
                 {
-                    if (directory.Substring(dir.Length, 4) == ("Proj")) //TODO add support for folders with different names and folders missing files
+                    if (directory.Substring(dir.Length, prefix.Length) == (prefix))
                     {
                         increment++;
                         IniHandler projIniHandler = new IniHandler(directory + @"\project.ini");
@@ -92,6 +93,7 @@ namespace iniTool
                 }
             }
         }
+
         /// <summary>
         /// Changes the files content and therefore repairs it.
         /// </summary>

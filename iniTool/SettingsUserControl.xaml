@@ -4,15 +4,17 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:iniTool"
-             mc:Ignorable="d" Width="293.052" Height="184.822" Loaded="settingsUserControl_Loaded">
+             mc:Ignorable="d" Width="500" Height="211.822" Loaded="settingsUserControl_Loaded">
     <Grid>
         <Label x:Name="lblSettings" Content="Settings" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
         <Label x:Name="lblRootSpecsDir" Content="Root Specs Dir:" Margin="0,30,0,0" Width="115" Style="{DynamicResource FlatUILabel}"/>
         <Label x:Name="lblRootModulesDir" Content="Root Modules Dir:" Margin="0,60,0,0" Width="115" Style="{DynamicResource FlatUILabel}"/>
         <Label x:Name="lblModulesIniFile" Content="Modules Ini File:" Margin="0,90,0,0" Width="115" Style="{DynamicResource FlatUILabel}"/>
-        <TextBox x:Name="tbRootSpecsDir" Margin="120,35,10,0" VerticalAlignment="Top" FontSize="13" Height="22.29"/>
+        <Label x:Name="lblPrefix" Content="Folder Prefix:" Margin="0,120,0,0" Width="115" Style="{DynamicResource FlatUILabel}"/>
+        <TextBox x:Name="tbRootSpecsDir" Margin="120,35,10,0" VerticalAlignment="Top" FontSize="13"/>
         <TextBox x:Name="tbRootModulesDir" Margin="120,65,10,0" VerticalAlignment="Top" FontSize="13"/>
         <TextBox x:Name="tbModulesIniFile" Margin="120,95,10,0" VerticalAlignment="Top" FontSize="13"/>
-        <Button x:Name="btnSaveSettings" Content="Save Settings" Margin="10,0,0,10" FontFamily="Segoe UI" VerticalAlignment="Bottom" HorizontalAlignment="Left" Style="{DynamicResource FlatUIButton}" Click="btnSaveSettings_Click"/>
+        <TextBox x:Name="tbPrefix" Margin="120,125,10,0" VerticalAlignment="Top" FontSize="13"/>
+        <Button x:Name="btnSaveSettings" Content="Save Settings" Margin="0,0,10,10" FontFamily="Segoe UI" VerticalAlignment="Bottom" Style="{DynamicResource FlatUIButton}" Click="btnSaveSettings_Click" Width="163" HorizontalAlignment="Right"/>
     </Grid>
 </UserControl>

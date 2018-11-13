@@ -18,6 +18,7 @@ namespace iniTool
             resEdit.SetModulesIniFile(tbModulesIniFile.Text);
             resEdit.SetRootModulesDir(tbRootModulesDir.Text);
             resEdit.SetRootSpecsDir(tbRootSpecsDir.Text);
+            resEdit.SetPrefix(tbPrefix.Text);
             MessageBox.Show("Settings saved!", "Successful", MessageBoxButton.OK, MessageBoxImage.Information);
         }
         private void settingsUserControl_Loaded(object sender, RoutedEventArgs e)
@@ -25,6 +26,7 @@ namespace iniTool
             tbRootSpecsDir.Text = resEdit.GetRootSpecsDir();
             tbRootModulesDir.Text = resEdit.GetRootModulesDir();
             tbModulesIniFile.Text = resEdit.GetModulesIniFile();
+            tbPrefix.Text = resEdit.GetPrefix();
         }
     }
 }

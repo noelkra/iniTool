@@ -166,7 +166,44 @@ namespace iniTool
             SetModulesIniFile(@"%CUSTOM_ROOT_PROD%\modules\modules.ini");
             SetRootModulesDir(@"%CUSTOM_ROOT_PROD%\modules");
             SetRootSpecsDir(@"%CUSTOM_ROOT_PROD%\Specs\Metric");
+            SetPrefix("Proj");
             SetPreferencesStatus();
+        }
+        /// <summary>
+        /// Gets the folder prefix.
+        /// </summary>
+        /// <returns name="prefix"></returns>
+        /// Returns the prefix.
+        public string GetPrefix()
+        {
+            string prefix = iniHandler.IniReadValue("GENERAL", "FolderPrefix");
+
+            if (prefix != null && prefix != "")
+            {
+                return prefix;
+            }
+            else
+            {
+                MessageBox.Show("No workspace selected!", "Error", MessageBoxButton.OK);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Saves the folderprefix to the ini-File
+        /// </summary>
+        /// <param name="prefix"></param>
+        /// The given prefix of the folder
+        public void SetPrefix(string prefix)
+        {
+            try
+            {
+                iniHandler.IniWriteValue("GENERAL", "FolderPrefix", prefix);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Oops, something went wrong! Error: " + ex, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }
