@@ -8,7 +8,7 @@ namespace iniTool
     /// </summary>
     public partial class SettingsUserControl : UserControl
     {
-        CustomRessourceEdit resEdit = new CustomRessourceEdit();
+        RessourceEdit resEdit = new RessourceEdit();
         public SettingsUserControl()
         {
             InitializeComponent();

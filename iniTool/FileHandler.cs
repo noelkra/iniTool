@@ -10,7 +10,7 @@ namespace iniTool
     {
         //Declaration
         private List<Content> contentList = new List<Content>();
-        private CustomRessourceEdit resEdit = new CustomRessourceEdit();
+        private RessourceEdit resEdit = new RessourceEdit();
         private ArrayList incorrectFiles = new ArrayList();
 
         /// <summary>

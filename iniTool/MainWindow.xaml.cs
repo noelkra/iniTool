@@ -10,7 +10,7 @@ namespace iniTool
     {
         FileHandler fileHandler = new FileHandler();
         DialogHandler dialogHandler = new DialogHandler();
-        CustomRessourceEdit resEdit = new CustomRessourceEdit();
+        RessourceEdit resEdit = new RessourceEdit();
         SettingsUserControl settingsUserControl = new SettingsUserControl();
 
         public MainWindow()

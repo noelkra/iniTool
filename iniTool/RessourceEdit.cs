@@ -3,7 +3,7 @@ using System.Windows;
 
 namespace iniTool
 {
-    class CustomRessourceEdit
+    class RessourceEdit
     {
         IniHandler iniHandler = new IniHandler(@".\preferences.ini");
 
