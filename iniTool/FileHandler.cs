@@ -9,10 +9,23 @@ namespace iniTool
     class FileHandler
     {
         //Declaration
-        private List<Content> contentList = new List<Content>();
-        private RessourceEdit resEdit = new RessourceEdit();
-        private ArrayList incorrectFiles = new ArrayList();
-
+        private List<Content> contentList;
+        private RessourceEdit resEdit;
+        private ArrayList incorrectFiles;
+        private string correctRootSpecsDir;
+        private string correctRootModulesDir;
+        private string correctModulesIniFile;
+        
+        //Constructor
+        public FileHandler()
+        {
+            resEdit = new RessourceEdit();
+            incorrectFiles = new ArrayList();
+            contentList = new List<Content>();
+            correctRootSpecsDir = resEdit.GetRootSpecsDir();
+            correctRootModulesDir = resEdit.GetRootModulesDir();
+            correctModulesIniFile = resEdit.GetModulesIniFile();
+        }
         /// <summary>
         /// Get content form chosen directory.
         /// </summary>
@@ -27,7 +40,6 @@ namespace iniTool
             int increment = 0;
 
             //Variables for the correct Values
-            string correctRootSpecsDir, correctRootModulesDir, correctModulesIniFile;
             string[] fileArray = null;
             //Get all Directories
             dir += @"\";
@@ -42,9 +54,7 @@ namespace iniTool
             ArrayList pathToFile = new ArrayList();
 
             //Get correct values
-            correctRootSpecsDir = resEdit.GetRootSpecsDir();
-            correctRootModulesDir = resEdit.GetRootModulesDir();
-            correctModulesIniFile = resEdit.GetModulesIniFile();
+
             if (fileArray != null)
             {
 
@@ -69,7 +79,7 @@ namespace iniTool
                         tempModulesIniFile = configIniHandler.IniReadValue("System", "Modules_Ini_File");
 
                         //Search for files
-                        if (tempRootSpecsDir != correctRootSpecsDir || tempRootModulesDir != correctRootModulesDir || tempModulesIniFile != correctModulesIniFile) //MODULES INI FILE
+                        if (tempRootSpecsDir != this.correctRootSpecsDir || tempRootModulesDir != this.correctRootModulesDir || tempModulesIniFile != this.correctModulesIniFile) //MODULES INI FILE
                         {
                             tempIsChecked = true;
                             incorrectFiles.Add(directory + @"\Config\config.ini");
@@ -90,9 +100,6 @@ namespace iniTool
             //TODO many things same as in GetContentFromFiles (Maybe combine to new Method?)
             string tempRootSpecsDir, tempRootModulesDir, tempModulesIniFile;
 
-            string correctRootSpecsDir = resEdit.GetRootSpecsDir();
-            string correctRootModulesDir = resEdit.GetRootModulesDir();
-            string correctModulesIniFile = resEdit.GetModulesIniFile();
             //Get path for all files that need to get changed
             foreach (string path in incorrectFiles)
             {
