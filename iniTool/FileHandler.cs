@@ -39,7 +39,6 @@ namespace iniTool
         {
             contentList.Clear();
             //Variables for temporary saved content from the .ini files
-            int increment = 0;
             string prefix = resEdit.GetPrefix();
 
             //Variables for the correct Values
@@ -63,7 +62,6 @@ namespace iniTool
                 {
                     if (directory.Substring(dir.Length, prefix.Length) == (prefix))
                     {
-                        increment++;
                         IniHandler projIniHandler = new IniHandler(directory + @"\project.ini");
                         IniHandler configIniHandler = new IniHandler(directory + @"\Config\config.ini");
 
