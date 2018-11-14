@@ -8,15 +8,21 @@ namespace iniTool
     /// </summary>
     public partial class MainWindow : Window
     {
-        FileHandler fileHandler = new FileHandler();
-        DialogHandler dialogHandler = new DialogHandler();
-        RessourceEdit resEdit = new RessourceEdit();
-        SettingsUserControl settingsUserControl = new SettingsUserControl();
+        FileHandler fileHandler;
+        DialogHandler dialogHandler;
+        RessourceEdit resEdit;
+        SettingsUserControl settingsUserControl;
+        WaitingDialog waitingDialog;
 
         public MainWindow()
         {
+            fileHandler = new FileHandler();
+            dialogHandler = new DialogHandler();
+            resEdit = new RessourceEdit();
+            settingsUserControl = new SettingsUserControl();
             InitializeComponent();
         }
+
         private void BtnAbout_Click(object sender, RoutedEventArgs e)
         {
             gridMainData.Visibility = Visibility.Hidden;
@@ -62,12 +68,13 @@ namespace iniTool
         }
         public void openFiles(string dir)
         {
+            waitingDialog = null;
             //TODO Enable button to open in explorer and uncomment the Information dispatcher ↓↓↓↓
             if (dir != null && dir != "")
             {
+                waitingDialog = new WaitingDialog();
                 setLoading(true);
                 fileHandler.LoadFileContent(dir);
-                //Dispatcher.BeginInvoke(new Action(() => { MessageBox.Show(this, "Workspace is loading. Please be patient as it can take up to 2 minutes.", "Please wait...", MessageBoxButton.OK, MessageBoxImage.Information); })); 
                 dgListFileContent.ItemsSource = null;
                 dgListFileContent.ItemsSource = fileHandler.getFileContent();
                 setLoading(false);
@@ -75,20 +82,13 @@ namespace iniTool
         }
         private void setLoading(bool loading)
         {
-            //TODO not working - gets executed but doesn't change stuff
             if (loading)
             {
-                Mouse.OverrideCursor = Cursors.Wait;
-                dgListFileContent.IsEnabled = false;
-                btnConfirmAction.IsEnabled = false;
-                //mnuToolbarMenu.IsEnabled = false;
+                waitingDialog.Show();
             }
             else
             {
-                Mouse.OverrideCursor = null;
-                dgListFileContent.IsEnabled = true;
-                btnConfirmAction.IsEnabled = true;
-                //mnuToolbarMenu.IsEnabled = true;
+                waitingDialog.Close();
             }
         }
     }
