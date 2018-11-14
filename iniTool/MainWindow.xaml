@@ -41,7 +41,7 @@
             </Button>
         </StackPanel>
         <Grid x:Name="gridMainData" Grid.Column="1">
-            <DataGrid x:Name="dgListFileContent" Margin="10,50,60,90" AlternationCount="2" AutoGenerateColumns="False" CanUserAddRows="false" ItemsSource="{Binding }" MinRowHeight="20">
+            <DataGrid x:Name="dgListFileContent" Margin="10,50,60,90" AlternationCount="2" AutoGenerateColumns="False" CanUserAddRows="false" ItemsSource="{Binding }" MinRowHeight="20" AlternatingRowBackground="LightGray">
                 <DataGrid.Columns>
                     <DataGridCheckBoxColumn Header="Repair" Binding="{Binding isChecked, UpdateSourceTrigger=PropertyChanged}"/>
                     <DataGridTextColumn Header="Project Name" Binding="{Binding projectName}" Width="2.5*" />
