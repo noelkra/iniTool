@@ -12,7 +12,7 @@
     </Window.TaskbarItemInfo>
     <Grid Margin="0,0,3.333,0">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*" MaxWidth="70" MinWidth="35"/>
             <ColumnDefinition Width="20*"/>
         </Grid.ColumnDefinitions>
         <StackPanel x:Name="stSidebar" Grid.Column="0" Background="{DynamicResource primary.turquoise}" Height="auto">

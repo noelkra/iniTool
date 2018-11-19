@@ -3,7 +3,7 @@ using System.Text;
 
 namespace iniTool
 {
-    /*  
+    /*  About this class
     *   This class was copied and modified from following Website
     *   https://www.codeproject.com/Articles/1966/An-INI-file-handling-class-using-C
     *   All credits go to the amazing folks on CodeProject
