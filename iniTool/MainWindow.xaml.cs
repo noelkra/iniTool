@@ -48,7 +48,6 @@ namespace iniTool
             resEdit.SetWorkspace(dir);
             openFiles(dir);
         }
-
         private void Window_Loaded(object sender, System.EventArgs e)
         {
             if (!resEdit.GetPreferencesStatus())

@@ -9,16 +9,21 @@ namespace iniTool
     public partial class SettingsUserControl : UserControl
     {
         RessourceEdit resEdit = new RessourceEdit();
+        IniHandler iniHandler;
+
         public SettingsUserControl()
         {
+            iniHandler = new IniHandler(@".\preferences.ini");
             InitializeComponent();
         }
         private void btnSaveSettings_Click(object sender, RoutedEventArgs e)
         {
-            resEdit.SetModulesIniFile(tbModulesIniFile.Text);
-            resEdit.SetRootModulesDir(tbRootModulesDir.Text);
-            resEdit.SetRootSpecsDir(tbRootSpecsDir.Text);
-            resEdit.SetPrefix(tbPrefix.Text);
+            iniHandler.IniWriteValue("PATHVALUES", "ModulesIniFile", tbModulesIniFile.Text);
+            iniHandler.IniWriteValue("PATHVALUES", "RootModulesDir", tbRootModulesDir.Text);
+            iniHandler.IniWriteValue("PATHVALUES", "RootSpecsDir", tbRootSpecsDir.Text);
+            iniHandler.IniWriteValue("GENERAL", "FolderPrefix", tbPrefix.Text);
+            iniHandler.IniWriteValue("GENERAL", "CUAE", cbCanUserApproveEdits.IsChecked.ToString());
+
             MessageBox.Show("Settings saved!", "Successful", MessageBoxButton.OK, MessageBoxImage.Information);
         }
         private void settingsUserControl_Loaded(object sender, RoutedEventArgs e)

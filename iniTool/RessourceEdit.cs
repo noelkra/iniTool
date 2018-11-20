@@ -65,16 +65,6 @@ namespace iniTool
         }
 
         /// <summary>
-        /// Saves the path of the Root_Specs_Dir
-        /// </summary>
-        /// <param name="dir"></param>
-        /// Path of Root_Specs_Dir
-        public void SetRootSpecsDir(string dir)
-        {
-            iniHandler.IniWriteValue("PATHVALUES", "Root_Specs_Dir", dir);
-        }
-
-        /// <summary>
         /// Get the path from Root_Modules_Dir
         /// </summary>
         /// <returns name="rootModulesDir"></returns>
@@ -95,16 +85,6 @@ namespace iniTool
         }
 
         /// <summary>
-        /// Saves the path of the Root_Modules_Dir
-        /// </summary>
-        /// <param name="dir"></param>
-        /// Path of Root_Modules_Dir
-        public void SetRootModulesDir(string dir)
-        {
-            iniHandler.IniWriteValue("PATHVALUES", "Root_Modules_Dir", dir);
-        }
-
-        /// <summary>
         /// Get the path from Modules_Ini_File
         /// </summary>
         /// <returns name="modulesIniFile"></returns>
@@ -122,16 +102,6 @@ namespace iniTool
                 MessageBox.Show("No path defined! Please define path and try again!", "Error", MessageBoxButton.OK);
                 return null;
             }
-        }
-
-        /// <summary>
-        /// Saves the path of the Modules_Ini_File
-        /// </summary>
-        /// <param name="dir"></param>
-        /// Path of Modules_Ini_File
-        public void SetModulesIniFile(string dir)
-        {
-            iniHandler.IniWriteValue("PATHVALUES", "Modules_Ini_File", dir);
         }
 
         /// <summary>
@@ -163,10 +133,11 @@ namespace iniTool
         /// </summary>
         public void SetDefaultPreferences()
         {
-            SetModulesIniFile(@"%CUSTOM_ROOT_PROD%\modules\modules.ini");
-            SetRootModulesDir(@"%CUSTOM_ROOT_PROD%\modules");
-            SetRootSpecsDir(@"%CUSTOM_ROOT_PROD%\Specs\Metric");
-            SetPrefix("Proj");
+            iniHandler.IniWriteValue("PATHVALUES", "ModulesIniFile", @"%CUSTOM_ROOT_PROD%\modules\modules.ini");
+            iniHandler.IniWriteValue("PATHVALUES", "RootModulesDir", @"%CUSTOM_ROOT_PROD%\modules");
+            iniHandler.IniWriteValue("PATHVALUES", "RootSpecsDir", @"%CUSTOM_ROOT_PROD%\Specs\Metric");
+            iniHandler.IniWriteValue("GENERAL", "FolderPrefix", "Proj");
+            iniHandler.IniWriteValue("GENERAL", "CUAE", "false");
             SetPreferencesStatus();
         }
         /// <summary>
@@ -186,23 +157,6 @@ namespace iniTool
             {
                 MessageBox.Show("No workspace selected!", "Error", MessageBoxButton.OK);
                 return null;
-            }
-        }
-
-        /// <summary>
-        /// Saves the folderprefix to the ini-File
-        /// </summary>
-        /// <param name="prefix"></param>
-        /// The given prefix of the folder
-        public void SetPrefix(string prefix)
-        {
-            try
-            {
-                iniHandler.IniWriteValue("GENERAL", "FolderPrefix", prefix);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Oops, something went wrong! Error: " + ex, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }
