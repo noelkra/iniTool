@@ -22,21 +22,21 @@ namespace iniTool
 
         private void BtnAbout_Click(object sender, RoutedEventArgs e)
         {
-            gridMainData.Visibility = Visibility.Hidden;
-            ucSettings.Visibility = Visibility.Hidden;
-            ucAbout.Visibility = Visibility.Visible;
+            GridMainData.Visibility = Visibility.Hidden;
+            UcSettings.Visibility = Visibility.Hidden;
+            UcAbout.Visibility = Visibility.Visible;
         }
         private void BtnSettings_Click(object sender, RoutedEventArgs e)
         {
-            gridMainData.Visibility = Visibility.Hidden;
-            ucSettings.Visibility = Visibility.Visible;
-            ucAbout.Visibility = Visibility.Hidden;
+            GridMainData.Visibility = Visibility.Hidden;
+            UcSettings.Visibility = Visibility.Visible;
+            UcAbout.Visibility = Visibility.Hidden;
         }
         private void BtnMain_Click(object sender, RoutedEventArgs e)
         {
-            gridMainData.Visibility = Visibility.Visible;
-            ucSettings.Visibility = Visibility.Hidden;
-            ucAbout.Visibility = Visibility.Hidden;
+            GridMainData.Visibility = Visibility.Visible;
+            UcSettings.Visibility = Visibility.Hidden;
+            UcAbout.Visibility = Visibility.Hidden;
         }
         private void BtnOpenNewWorkspace_Click(object sender, RoutedEventArgs e)
         {
@@ -70,8 +70,8 @@ namespace iniTool
                 _waitingDialog = new WaitingDialog();
                 SetLoading(true);
                 _fileHandler.LoadFileContent(dir);
-                dgListFileContent.ItemsSource = null;
-                dgListFileContent.ItemsSource = _fileHandler.GetFileContent();
+                DgListFileContent.ItemsSource = null;
+                DgListFileContent.ItemsSource = _fileHandler.GetFileContent();
                 SetLoading(false);
             }
         }

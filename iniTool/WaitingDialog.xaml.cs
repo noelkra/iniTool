@@ -1,6 +1,4 @@
-﻿using System.Windows;
-
-namespace iniTool
+﻿namespace iniTool
 {
     /// <summary>
     /// Interaction logic for WaitingDialog.xaml
