@@ -19,22 +19,22 @@
             <StackPanel.Effect>
                 <DropShadowEffect Direction="0" BlurRadius="4" ShadowDepth="3" Color="#FF9D9D9D"/>
             </StackPanel.Effect>
-            <Button x:Name="BtnMain" Height="{Binding ActualWidth, ElementName=BtnMain}" Width="Auto" BorderBrush="{x:Null}" Foreground="{x:Null}" Style="{DynamicResource FlatUiMenuButton}" Click="BtnMain_Click">
+            <Button x:Name="BtnMain" Height="{Binding ActualWidth, ElementName=BtnMain}" Width="Auto" BorderBrush="{x:Null}" Foreground="{x:Null}" Style="{DynamicResource FlatUiButton}" Click="BtnMain_Click">
                 <Button.Background>
                     <ImageBrush ImageSource="img/icons8-home-1024.png"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="BtnOpenNewWorkspace" Height="{Binding ActualWidth, ElementName=BtnOpenNewWorkspace}" Style="{DynamicResource FlatUiMenuButton}" Width="Auto" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="BtnOpenNewWorkspace_Click">
+            <Button x:Name="BtnOpenNewWorkspace" Height="{Binding ActualWidth, ElementName=BtnOpenNewWorkspace}" Style="{DynamicResource FlatUiButton}" Width="Auto" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="BtnOpenNewWorkspace_Click">
                 <Button.Background>
                     <ImageBrush ImageSource="img/icons8-opened-folder-1024.png"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="BtnSettings" Height="{Binding ActualWidth, ElementName=BtnSettings}" Style="{DynamicResource FlatUiMenuButton}" Width="Auto" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="BtnSettings_Click">
+            <Button x:Name="BtnSettings" Height="{Binding ActualWidth, ElementName=BtnSettings}" Style="{DynamicResource FlatUiButton}" Width="Auto" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="BtnSettings_Click">
                 <Button.Background>
                     <ImageBrush ImageSource="img/icons8-services-1024.png"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="BtnAbout" Height="{Binding ActualWidth, ElementName=BtnAbout}" Style="{DynamicResource FlatUiMenuButton}" Width="Auto" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="BtnAbout_Click">
+            <Button x:Name="BtnAbout" Height="{Binding ActualWidth, ElementName=BtnAbout}" Style="{DynamicResource FlatUiButton}" Width="Auto" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="BtnAbout_Click">
                 <Button.Background>
                     <ImageBrush ImageSource="img/icons8-about-1024.png"/>
                 </Button.Background>
