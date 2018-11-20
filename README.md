@@ -2,11 +2,12 @@
 iniTool is a simple tool to watch and edit multiple .ini files at once.
 
 ### How does it work?
-It searches for specific .ini Files in Folders beginning with "Proj" 
-and checks the content of them if it complies with the given settings.
+It searches for specific .ini Files in Folders beginning with a specified prefix 
+and checks the content of them if it complies with the given settings. This means that many files can be processed simultaneously.
 
 ### Does it work for me?
-This primary an internal Project so i will first fullfill the given requirements.
+It will! You have to compile it yourself at the moment but it will work.
+Please note that this is primary an internal Project so i will first fullfill the requirements given from my company.
 I will extend the program to get more flexible in the near future.
 
 ### Can I request features?
