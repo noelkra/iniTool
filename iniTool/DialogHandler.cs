@@ -4,8 +4,10 @@ namespace iniTool
 {
     class DialogHandler
     {
-        Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
-
+        public DialogHandler()
+        {
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+        }
         /// <summary>
         /// Creates and Shows an "Open File"-Dialog
         /// </summary>
@@ -15,8 +17,6 @@ namespace iniTool
         {
             string dir;
 
-            //Open a new FolderBrowserDialog form Windows Forms
-            //TODO replace if newer option available 
             using (var dialog = new System.Windows.Forms.FolderBrowserDialog())
             {
                 System.Windows.Forms.DialogResult result = dialog.ShowDialog();
@@ -24,6 +24,5 @@ namespace iniTool
             }
             return dir;
         }
-
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows;
@@ -26,9 +25,6 @@ namespace iniTool
             incorrectFiles = new ArrayList();
             contentList = new List<Content>();
             pathToFile = new ArrayList();
-            correctRootSpecsDir = resEdit.GetRootSpecsDir();
-            correctRootModulesDir = resEdit.GetRootModulesDir();
-            correctModulesIniFile = resEdit.GetModulesIniFile();
         }
         /// <summary>
         /// Get content form chosen directory.
@@ -37,9 +33,11 @@ namespace iniTool
         /// Path to Directory
         public void LoadFileContent(string dir) //TODO shorten and split into multiple methods
         {
+            correctRootSpecsDir = resEdit.GetRootSpecsDir();
+            correctRootModulesDir = resEdit.GetRootModulesDir();
+            correctModulesIniFile = resEdit.GetModulesIniFile();
             contentList.Clear();
             //Variables for temporary saved content from the .ini files
-            string prefix = resEdit.GetPrefix();
 
             //Variables for the correct Values
             string[] fileArray = null;
@@ -57,50 +55,57 @@ namespace iniTool
             //Get correct values
             if (fileArray != null)
             {
+                SetCorrectFiles(fileArray, dir);
+            }
+        }
+        private void SetCorrectFiles(string[] fileArray, string dir)
+        {
+            string prefix = resEdit.GetPrefix();
+            foreach (string filepath in fileArray)
+            {
 
-                foreach (string directory in fileArray)
+                if (filepath.Substring(dir.Length, prefix.Length) == (prefix)) //TODO error here
                 {
-                    if (directory.Substring(dir.Length, prefix.Length) == (prefix))
+                    IniHandler projIniHandler = new IniHandler(filepath + @"\project.ini");
+                    IniHandler configIniHandler = new IniHandler(filepath + @"\Config\config.ini");
+
+                    //get content form project.ini
+                    tempProjectName = projIniHandler.IniReadValue("GENERAL", "PROJECTNAME");
+                    tempProjectID = projIniHandler.IniReadValue("GENERAL", "PROJECTID");
+                    tempProjectGUID = projIniHandler.IniReadValue("GENERAL", "PROJECTGUID");
+                    tempPWProject = projIniHandler.IniReadValue("ProjectWise", "PWProject");
+                    tempPWProjectGUID = projIniHandler.IniReadValue("ProjectWise", "PWProjectGUID");
+
+                    //get content from config.ini
+                    tempRootSpecsDir = configIniHandler.IniReadValue("System", "Root_Specs_Dir");
+                    tempRootModulesDir = configIniHandler.IniReadValue("System", "Root_Modules_Dir");
+                    tempModulesIniFile = configIniHandler.IniReadValue("System", "Modules_Ini_File");
+
+                    //Search for files
+                    if (tempRootSpecsDir != this.correctRootSpecsDir || tempRootModulesDir != this.correctRootModulesDir || tempModulesIniFile != this.correctModulesIniFile) //MODULES INI FILE
                     {
-                        IniHandler projIniHandler = new IniHandler(directory + @"\project.ini");
-                        IniHandler configIniHandler = new IniHandler(directory + @"\Config\config.ini");
-
-                        //get content form project.ini
-                        tempProjectName = projIniHandler.IniReadValue("GENERAL", "PROJECTNAME");
-                        tempProjectID = projIniHandler.IniReadValue("GENERAL", "PROJECTID");
-                        tempProjectGUID = projIniHandler.IniReadValue("GENERAL", "PROJECTGUID");
-                        tempPWProject = projIniHandler.IniReadValue("ProjectWise", "PWProject");
-                        tempPWProjectGUID = projIniHandler.IniReadValue("ProjectWise", "PWProjectGUID");
-
-                        //get content from config.ini
-                        tempRootSpecsDir = configIniHandler.IniReadValue("System", "Root_Specs_Dir");
-                        tempRootModulesDir = configIniHandler.IniReadValue("System", "Root_Modules_Dir");
-                        tempModulesIniFile = configIniHandler.IniReadValue("System", "Modules_Ini_File");
-
-                        //Search for files
-                        if (tempRootSpecsDir != this.correctRootSpecsDir || tempRootModulesDir != this.correctRootModulesDir || tempModulesIniFile != this.correctModulesIniFile) //MODULES INI FILE
-                        {
-                            tempIsChecked = true;
-                            incorrectFiles.Add(directory + @"\Config\config.ini");
-                        }
-                        else { tempIsChecked = false; }
-
-                        //Add content to contentList
-                        setContentList(directory, tempIsChecked, tempProjectName, tempProjectID, tempProjectGUID, tempPWProject, tempPWProjectGUID, tempRootSpecsDir, tempRootModulesDir, tempModulesIniFile);
+                        tempIsChecked = true;
+                        incorrectFiles.Add(filepath + @"\Config\config.ini");
                     }
+                    else { tempIsChecked = false; }
+
+                    //Add content to contentList
+                    setContentList(filepath, tempIsChecked, tempProjectName, tempProjectID, tempProjectGUID, tempPWProject, tempPWProjectGUID, tempRootSpecsDir, tempRootModulesDir, tempModulesIniFile);
                 }
             }
         }
 
         /// <summary>
-        /// Changes the files content and therefore repairs it.
+        ///     Changes the files content and therefore repairs it.
         /// </summary>
+        /// Gets the correct values from the ini-File and compares the actual value from the files.
+        /// If the values aren't the same, the wrong values get changed and corrected.
         public void RepairFiles()
         {
-            //Get path for all files that need to get changed
-            foreach (string path in incorrectFiles)
+            //Get filepath for all files that need to get changed
+            foreach (string filepath in incorrectFiles)
             {
-                IniHandler configIniHandler = new IniHandler(path);
+                IniHandler configIniHandler = new IniHandler(filepath);
                 tempRootSpecsDir = configIniHandler.IniReadValue("System", "Root_Specs_Dir");
                 tempRootModulesDir = configIniHandler.IniReadValue("System", "Root_Modules_Dir");
                 tempModulesIniFile = configIniHandler.IniReadValue("System", "Modules_Ini_File");
@@ -121,16 +126,6 @@ namespace iniTool
                 }
             }
         }
-
-        /// <summary>
-        /// Gets the checked entries in the DataGrid and returns them
-        /// </summary>
-        private void getIsChecked()
-        {
-            //TODO User should can choose which files to change.
-            throw new NotImplementedException();
-        }
-
         /// <summary>
         /// Returns the contentList
         /// </summary>

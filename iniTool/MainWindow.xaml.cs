@@ -1,5 +1,4 @@
 ﻿using System.Windows;
-using System.Windows.Input;
 
 namespace iniTool
 {
@@ -68,7 +67,6 @@ namespace iniTool
         public void openFiles(string dir)
         {
             waitingDialog = null;
-            //TODO Enable button to open in explorer and uncomment the Information dispatcher ↓↓↓↓
             if (dir != null && dir != "")
             {
                 waitingDialog = new WaitingDialog();
