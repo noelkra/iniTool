@@ -37,7 +37,6 @@ namespace iniTool
             correctRootModulesDir = resEdit.GetRootModulesDir();
             correctModulesIniFile = resEdit.GetModulesIniFile();
             contentList.Clear();
-            //Variables for temporary saved content from the .ini files
 
             //Variables for the correct Values
             string[] fileArray = null;
@@ -47,9 +46,9 @@ namespace iniTool
             {
                 fileArray = Directory.GetDirectories(dir);
             }
-            catch (DirectoryNotFoundException dnfEX)
+            catch (DirectoryNotFoundException dnfEx)
             {
-                MessageBox.Show("Directory could not be found! Error: " + dnfEX, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Directory could not be found! Error: " + dnfEx, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
             //Get correct values
@@ -63,35 +62,32 @@ namespace iniTool
             string prefix = resEdit.GetPrefix();
             foreach (string filepath in fileArray)
             {
+                if (filepath.Substring(dir.Length, prefix.Length) != (prefix)) continue;
+                IniHandler projIniHandler = new IniHandler($@"{filepath}\project.ini");
+                IniHandler configIniHandler = new IniHandler($@"{filepath}\Config\config.ini");
 
-                if (filepath.Substring(dir.Length, prefix.Length) == (prefix)) //TODO error here
+                //get content form project.ini
+                tempProjectName = projIniHandler.IniReadValue("GENERAL", "PROJECTNAME");
+                tempProjectID = projIniHandler.IniReadValue("GENERAL", "PROJECTID");
+                tempProjectGUID = projIniHandler.IniReadValue("GENERAL", "PROJECTGUID");
+                tempPWProject = projIniHandler.IniReadValue("ProjectWise", "PWProject");
+                tempPWProjectGUID = projIniHandler.IniReadValue("ProjectWise", "PWProjectGUID");
+
+                //get content from config.ini
+                tempRootSpecsDir = configIniHandler.IniReadValue("System", "Root_Specs_Dir");
+                tempRootModulesDir = configIniHandler.IniReadValue("System", "Root_Modules_Dir");
+                tempModulesIniFile = configIniHandler.IniReadValue("System", "Modules_Ini_File");
+
+                //Search for files
+                if (tempRootSpecsDir != this.correctRootSpecsDir || tempRootModulesDir != this.correctRootModulesDir || tempModulesIniFile != this.correctModulesIniFile) //MODULES INI FILE
                 {
-                    IniHandler projIniHandler = new IniHandler(filepath + @"\project.ini");
-                    IniHandler configIniHandler = new IniHandler(filepath + @"\Config\config.ini");
-
-                    //get content form project.ini
-                    tempProjectName = projIniHandler.IniReadValue("GENERAL", "PROJECTNAME");
-                    tempProjectID = projIniHandler.IniReadValue("GENERAL", "PROJECTID");
-                    tempProjectGUID = projIniHandler.IniReadValue("GENERAL", "PROJECTGUID");
-                    tempPWProject = projIniHandler.IniReadValue("ProjectWise", "PWProject");
-                    tempPWProjectGUID = projIniHandler.IniReadValue("ProjectWise", "PWProjectGUID");
-
-                    //get content from config.ini
-                    tempRootSpecsDir = configIniHandler.IniReadValue("System", "Root_Specs_Dir");
-                    tempRootModulesDir = configIniHandler.IniReadValue("System", "Root_Modules_Dir");
-                    tempModulesIniFile = configIniHandler.IniReadValue("System", "Modules_Ini_File");
-
-                    //Search for files
-                    if (tempRootSpecsDir != this.correctRootSpecsDir || tempRootModulesDir != this.correctRootModulesDir || tempModulesIniFile != this.correctModulesIniFile) //MODULES INI FILE
-                    {
-                        tempIsChecked = true;
-                        incorrectFiles.Add(filepath + @"\Config\config.ini");
-                    }
-                    else { tempIsChecked = false; }
-
-                    //Add content to contentList
-                    setContentList(filepath, tempIsChecked, tempProjectName, tempProjectID, tempProjectGUID, tempPWProject, tempPWProjectGUID, tempRootSpecsDir, tempRootModulesDir, tempModulesIniFile);
+                    tempIsChecked = true;
+                    incorrectFiles.Add(filepath + @"\Config\config.ini");
                 }
+                else { tempIsChecked = false; }
+
+                //Add content to contentList
+                setContentList(filepath, tempIsChecked, tempProjectName, tempProjectID, tempProjectGUID, tempPWProject, tempPWProjectGUID, tempRootSpecsDir, tempRootModulesDir, tempModulesIniFile);
             }
         }
 
