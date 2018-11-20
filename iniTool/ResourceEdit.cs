@@ -3,7 +3,7 @@ using System.Windows;
 
 namespace iniTool
 {
-    internal class RessourceEdit
+    internal class ResourceEdit
     {
         private readonly IniHandler _iniHandler = new IniHandler(@".\preferences.ini");
 
@@ -14,17 +14,15 @@ namespace iniTool
         /// Returns the path.
         public string GetWorkspace()
         {
-            string workspacePath = _iniHandler.IniReadValue("GENERAL", "workspacePath");
+            var workspacePath = _iniHandler.IniReadValue("GENERAL", "workspacePath");
 
             if (!string.IsNullOrEmpty(workspacePath))
             {
                 return workspacePath;
             }
-            else
-            {
-                MessageBox.Show("No workspace selected!", "Error", MessageBoxButton.OK);
-                return null;
-            }
+
+            MessageBox.Show("No workspace selected!", "Error", MessageBoxButton.OK);
+            return null;
         }
 
         /// <summary>
@@ -64,17 +62,15 @@ namespace iniTool
         /// Returns the path.
         public string GetRootSpecsDir()
         {
-            string rootSpecsDir = _iniHandler.IniReadValue("PATHVALUES", "RootSpecsDir");
+            var rootSpecsDir = _iniHandler.IniReadValue("PATHVALUES", "RootSpecsDir");
 
             if (!string.IsNullOrEmpty(rootSpecsDir))
             {
                 return rootSpecsDir;
             }
-            else
-            {
-                MessageBox.Show("No path defined! Please define a path and try again!", "Error", MessageBoxButton.OK);
-                return null;
-            }
+
+            MessageBox.Show("No path defined! Please define a path and try again!", "Error", MessageBoxButton.OK);
+            return null;
         }
 
         /// <summary>
@@ -84,17 +80,15 @@ namespace iniTool
         /// Returns the path.
         public string GetRootModulesDir()
         {
-            string rootModulesDir = _iniHandler.IniReadValue("PATHVALUES", "RootModulesDir");
+            var rootModulesDir = _iniHandler.IniReadValue("PATHVALUES", "RootModulesDir");
 
             if (!string.IsNullOrEmpty(rootModulesDir))
             {
                 return rootModulesDir;
             }
-            else
-            {
-                MessageBox.Show("No path defined! Please define path and try again!", "Error", MessageBoxButton.OK);
-                return null;
-            }
+
+            MessageBox.Show("No path defined! Please define path and try again!", "Error", MessageBoxButton.OK);
+            return null;
         }
 
         /// <summary>
@@ -104,17 +98,15 @@ namespace iniTool
         /// Returns the path.
         public string GetModulesIniFile()
         {
-            string modulesIniFile = _iniHandler.IniReadValue("PATHVALUES", "ModulesIniFile");
+            var modulesIniFile = _iniHandler.IniReadValue("PATHVALUES", "ModulesIniFile");
 
             if (!string.IsNullOrEmpty(modulesIniFile))
             {
                 return modulesIniFile;
             }
-            else
-            {
-                MessageBox.Show("No path defined! Please define path and try again!", "Error", MessageBoxButton.OK);
-                return null;
-            }
+
+            MessageBox.Show("No path defined! Please define path and try again!", "Error", MessageBoxButton.OK);
+            return null;
         }
 
         /// <summary>
@@ -130,15 +122,8 @@ namespace iniTool
         /// </summary>
         public bool GetPreferencesStatus()
         {
-            string status = _iniHandler.IniReadValue("APPLICATION_DO_NOT_EDIT", "isPreferencesLoaded");
-            if (status == "true")
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            var status = _iniHandler.IniReadValue("APPLICATION_DO_NOT_EDIT", "isPreferencesLoaded");
+            return status == "true";
         }
 
         /// <summary>
@@ -148,28 +133,19 @@ namespace iniTool
         /// Returns the prefix.
         public string GetPrefix()
         {
-            string prefix = _iniHandler.IniReadValue("GENERAL", "FolderPrefix");
+            var prefix = _iniHandler.IniReadValue("GENERAL", "FolderPrefix");
 
             if (!string.IsNullOrEmpty(prefix))
             {
                 return prefix;
             }
-            else
-            {
-                MessageBox.Show("No workspace selected!", "Error", MessageBoxButton.OK);
-                return null;
-            }
+
+            MessageBox.Show("No workspace selected!", "Error", MessageBoxButton.OK);
+            return null;
         }
         public bool CanUserApproveEdits()
         {
-            if (_iniHandler.IniReadValue("GENERAL", "CUAE") == "True")
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return _iniHandler.IniReadValue("GENERAL", "CUAE") == "True";
         }
     }
 }

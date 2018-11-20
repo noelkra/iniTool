@@ -98,7 +98,7 @@
       <DependentUpon>AboutUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Content.cs" />
-    <Compile Include="RessourceEdit.cs" />
+    <Compile Include="ResourceEdit.cs" />
     <Compile Include="IniHandler.cs" />
     <Compile Include="SettingsUserControl.xaml.cs">
       <DependentUpon>SettingsUserControl.xaml</DependentUpon>

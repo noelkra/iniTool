@@ -9,7 +9,7 @@ namespace iniTool
     {
         //Declaration
         private readonly List<Content> _contentList;
-        private readonly RessourceEdit _resEdit;
+        private readonly ResourceEdit _resEdit;
         private readonly ArrayList _incorrectFiles;
         private string _correctRootSpecsDir;
         private string _correctRootModulesDir;
@@ -19,7 +19,7 @@ namespace iniTool
         //Constructor
         public FileHandler()
         {
-            _resEdit = new RessourceEdit();
+            _resEdit = new ResourceEdit();
             _incorrectFiles = new ArrayList();
             _contentList = new List<Content>();
         }
@@ -54,14 +54,14 @@ namespace iniTool
                 SetCorrectFiles(fileArray, dir);
             }
         }
-        private void SetCorrectFiles(string[] fileArray, string dir)
+        private void SetCorrectFiles(IEnumerable<string> fileArray, string dir)
         {
-            string prefix = _resEdit.GetPrefix();
-            foreach (string filepath in fileArray)
+            var prefix = _resEdit.GetPrefix();
+            foreach (var filepath in fileArray)
             {
-                if (filepath.Substring(dir.Length, prefix.Length) != (prefix)) continue;
-                IniHandler projIniHandler = new IniHandler($@"{filepath}\project.ini");
-                IniHandler configIniHandler = new IniHandler($@"{filepath}\Config\config.ini");
+                if (filepath.Substring(dir.Length, prefix.Length) != prefix) continue;
+                var projIniHandler = new IniHandler($@"{filepath}\project.ini");
+                var configIniHandler = new IniHandler($@"{filepath}\Config\config.ini");
 
                 //get content form project.ini
                 _tempProjectName = projIniHandler.IniReadValue("GENERAL", "PROJECTNAME");
@@ -98,7 +98,7 @@ namespace iniTool
             //Get filepath for all files that need to get changed
             foreach (string filepath in _incorrectFiles)
             {
-                IniHandler configIniHandler = new IniHandler(filepath);
+                var configIniHandler = new IniHandler(filepath);
                 _tempRootSpecsDir = configIniHandler.IniReadValue("System", "Root_Specs_Dir");
                 _tempRootModulesDir = configIniHandler.IniReadValue("System", "Root_Modules_Dir");
                 _tempModulesIniFile = configIniHandler.IniReadValue("System", "Modules_Ini_File");
@@ -133,7 +133,7 @@ namespace iniTool
         /// </summary>
         private void SetContentList(string directory, bool tempIsChecked, string tempProjectName, string tempProjectId, string tempProjectGuid, string tempPwProject, string tempPwProjectGuid, string tempRootSpecsDir, string tempRootModulesDir, string tempModulesIniFile)
         {
-            _contentList.Add(new Content()
+            _contentList.Add(new Content
             {
                 FolderPath = directory,
                 IsChecked = tempIsChecked,

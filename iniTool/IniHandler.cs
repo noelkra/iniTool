@@ -50,7 +50,7 @@ namespace iniTool
         /// <returns></returns>
         public string IniReadValue(string section, string key)
         {
-            StringBuilder temp = new StringBuilder(255);
+            var temp = new StringBuilder(255);
             GetPrivateProfileString(section, key, "", temp, 255, _path);
             return temp.ToString();
 

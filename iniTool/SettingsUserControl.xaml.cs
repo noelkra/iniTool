@@ -7,7 +7,7 @@ namespace iniTool
     /// </summary>
     public partial class SettingsUserControl
     {
-        private readonly RessourceEdit _resEdit = new RessourceEdit();
+        private readonly ResourceEdit _resEdit = new ResourceEdit();
         private readonly IniHandler _iniHandler;
 
         public SettingsUserControl()
