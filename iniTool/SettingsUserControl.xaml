@@ -12,7 +12,7 @@
         <Label x:Name="lblModulesIniFile" Content="Modules Ini File:" Margin="0,90,0,0" Width="150" Style="{DynamicResource FlatUILabel}"/>
         <Label x:Name="lblPrefix" Content="Folder Prefix:" Margin="0,120,0,0" Width="150" Style="{DynamicResource FlatUILabel}"/>
         <Label x:Name="lblCanUserApproveEdits" Content="Can user approve edits:" Margin="0,150,0,0" Width="150" Style="{DynamicResource FlatUILabel}"/>
-        <TextBox x:Name="tbRootSpecsDir" Margin="1575,35,10,0" VerticalAlignment="Top" FontSize="13"/>
+        <TextBox x:Name="tbRootSpecsDir" Margin="175,35,10,0" VerticalAlignment="Top" FontSize="13"/>
         <TextBox x:Name="tbRootModulesDir" Margin="175,65,10,0" VerticalAlignment="Top" FontSize="13"/>
         <TextBox x:Name="tbModulesIniFile" Margin="175,95,10,0" VerticalAlignment="Top" FontSize="13"/>
         <TextBox x:Name="tbPrefix" Margin="175,125,10,0" VerticalAlignment="Top" FontSize="13"/>
