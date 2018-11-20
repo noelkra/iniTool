@@ -5,87 +5,81 @@ namespace iniTool
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow
     {
-        FileHandler fileHandler;
-        DialogHandler dialogHandler;
-        RessourceEdit resEdit;
-        SettingsUserControl settingsUserControl;
-        WaitingDialog waitingDialog;
+        private readonly FileHandler _fileHandler;
+        private readonly DialogHandler _dialogHandler;
+        private readonly ResourceEdit _resEdit;
+        private WaitingDialog _waitingDialog;
 
         public MainWindow()
         {
-            fileHandler = new FileHandler();
-            dialogHandler = new DialogHandler();
-            resEdit = new RessourceEdit();
-            settingsUserControl = new SettingsUserControl();
+            _fileHandler = new FileHandler();
+            _dialogHandler = new DialogHandler();
+            _resEdit = new ResourceEdit();
             InitializeComponent();
         }
 
         private void BtnAbout_Click(object sender, RoutedEventArgs e)
         {
-            gridMainData.Visibility = Visibility.Hidden;
-            ucSettings.Visibility = Visibility.Hidden;
-            ucAbout.Visibility = Visibility.Visible;
+            GridMainData.Visibility = Visibility.Hidden;
+            UcSettings.Visibility = Visibility.Hidden;
+            UcAbout.Visibility = Visibility.Visible;
         }
         private void BtnSettings_Click(object sender, RoutedEventArgs e)
         {
-            gridMainData.Visibility = Visibility.Hidden;
-            ucSettings.Visibility = Visibility.Visible;
-            ucAbout.Visibility = Visibility.Hidden;
+            GridMainData.Visibility = Visibility.Hidden;
+            UcSettings.Visibility = Visibility.Visible;
+            UcAbout.Visibility = Visibility.Hidden;
         }
         private void BtnMain_Click(object sender, RoutedEventArgs e)
         {
-            gridMainData.Visibility = Visibility.Visible;
-            ucSettings.Visibility = Visibility.Hidden;
-            ucAbout.Visibility = Visibility.Hidden;
+            GridMainData.Visibility = Visibility.Visible;
+            UcSettings.Visibility = Visibility.Hidden;
+            UcAbout.Visibility = Visibility.Hidden;
         }
         private void BtnOpenNewWorkspace_Click(object sender, RoutedEventArgs e)
         {
             //If folder chosen successfully, save to ini-file
-            string dir = dialogHandler.OpenFolderDialog();
-            resEdit.SetWorkspace(dir);
-            openFiles(dir);
+            var dir = _dialogHandler.OpenFolderDialog();
+            _resEdit.SetWorkspace(dir);
+            OpenFiles(dir);
         }
         private void Window_Loaded(object sender, System.EventArgs e)
         {
-            if (!resEdit.GetPreferencesStatus())
+            if (!_resEdit.GetPreferencesStatus())
             {
-                resEdit.SetDefaultPreferences();
+                _resEdit.SetDefaultPreferences();
             }
         }
         private void btnConfirmAction_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("This operation cannot be undone. Are you sure you want to continue?", "Confirm action", MessageBoxButton.YesNo);
-            if (result == MessageBoxResult.Yes)
-            {
-                //Repair the Files and reload them afterwards.
-                fileHandler.RepairFiles();
-                openFiles(resEdit.GetWorkspace());
-            }
+            var result = MessageBox.Show("This operation cannot be undone. Are you sure you want to continue?", "Confirm action", MessageBoxButton.YesNo);
+            if (result != MessageBoxResult.Yes) return;
+            //Repair the Files and reload them afterwards.
+            _fileHandler.RepairFiles();
+            OpenFiles(_resEdit.GetWorkspace());
         }
-        public void openFiles(string dir)
+        public void OpenFiles(string dir)
         {
-            waitingDialog = null;
-            if (dir != null && dir != "")
-            {
-                waitingDialog = new WaitingDialog();
-                setLoading(true);
-                fileHandler.LoadFileContent(dir);
-                dgListFileContent.ItemsSource = null;
-                dgListFileContent.ItemsSource = fileHandler.getFileContent();
-                setLoading(false);
-            }
+            _waitingDialog = null;
+            if (string.IsNullOrEmpty(dir)) return;
+            _waitingDialog = new WaitingDialog();
+            SetLoading(true);
+            _fileHandler.LoadFileContent(dir);
+            DgListFileContent.ItemsSource = null;
+            DgListFileContent.ItemsSource = _fileHandler.GetFileContent();
+            SetLoading(false);
         }
-        private void setLoading(bool loading)
+        private void SetLoading(bool loading)
         {
             if (loading)
             {
-                waitingDialog.Show();
+                _waitingDialog.Show();
             }
             else
             {
-                waitingDialog.Close();
+                _waitingDialog.Close();
             }
         }
     }

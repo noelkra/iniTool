@@ -3,20 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:iniTool"
              mc:Ignorable="d" Width="500" Height="250" Loaded="settingsUserControl_Loaded">
     <Grid>
-        <Label x:Name="lblSettings" Content="Settings" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
-        <Label x:Name="lblRootSpecsDir" Content="Root Specs Dir:" Margin="0,30,0,0" Width="150" Style="{DynamicResource FlatUILabel}"/>
-        <Label x:Name="lblRootModulesDir" Content="Root Modules Dir:" Margin="0,60,0,0" Width="150" Style="{DynamicResource FlatUILabel}"/>
-        <Label x:Name="lblModulesIniFile" Content="Modules Ini File:" Margin="0,90,0,0" Width="150" Style="{DynamicResource FlatUILabel}"/>
-        <Label x:Name="lblPrefix" Content="Folder Prefix:" Margin="0,120,0,0" Width="150" Style="{DynamicResource FlatUILabel}"/>
-        <Label x:Name="lblCanUserApproveEdits" Content="Can user approve edits:" Margin="0,150,0,0" Width="150" Style="{DynamicResource FlatUILabel}"/>
-        <TextBox x:Name="tbRootSpecsDir" Margin="175,35,10,0" VerticalAlignment="Top" FontSize="13"/>
-        <TextBox x:Name="tbRootModulesDir" Margin="175,65,10,0" VerticalAlignment="Top" FontSize="13"/>
-        <TextBox x:Name="tbModulesIniFile" Margin="175,95,10,0" VerticalAlignment="Top" FontSize="13"/>
-        <TextBox x:Name="tbPrefix" Margin="175,125,10,0" VerticalAlignment="Top" FontSize="13"/>
-        <CheckBox x:Name="cbCanUserApproveEdits" Margin="175,155,10,0" VerticalAlignment="Top" FontSize="13"/>
-        <Button x:Name="btnSaveSettings" Content="Save Settings" Margin="0,0,10,10" FontFamily="Segoe UI" VerticalAlignment="Bottom" Style="{DynamicResource FlatUIButton}" Click="btnSaveSettings_Click" Width="163" HorizontalAlignment="Right"/>
+        <Label x:Name="LblSettings" Content="Settings" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+        <Label x:Name="LblRootSpecsDir" Content="Root Specs Dir:" Margin="0,30,0,0" Width="150" Style="{DynamicResource FlatUiLabel}"/>
+        <Label x:Name="LblRootModulesDir" Content="Root Modules Dir:" Margin="0,60,0,0" Width="150" Style="{DynamicResource FlatUiLabel}"/>
+        <Label x:Name="LblModulesIniFile" Content="Modules Ini File:" Margin="0,90,0,0" Width="150" Style="{DynamicResource FlatUiLabel}"/>
+        <Label x:Name="LblPrefix" Content="Folder Prefix:" Margin="0,120,0,0" Width="150" Style="{DynamicResource FlatUiLabel}"/>
+        <Label x:Name="LblCanUserApproveEdits" Content="Can user approve edits:" Margin="0,150,0,0" Width="150" Style="{DynamicResource FlatUiLabel}"/>
+        <TextBox x:Name="TbRootSpecsDir" Margin="175,35,10,0" VerticalAlignment="Top" FontSize="13"/>
+        <TextBox x:Name="TbRootModulesDir" Margin="175,65,10,0" VerticalAlignment="Top" FontSize="13"/>
+        <TextBox x:Name="TbModulesIniFile" Margin="175,95,10,0" VerticalAlignment="Top" FontSize="13"/>
+        <TextBox x:Name="TbPrefix" Margin="175,125,10,0" VerticalAlignment="Top" FontSize="13"/>
+        <CheckBox x:Name="CbCanUserApproveEdits" Margin="175,155,10,0" VerticalAlignment="Top" FontSize="13"/>
+        <Button x:Name="BtnSaveSettings" Content="Save Settings" Margin="0,0,10,10" FontFamily="Segoe UI" VerticalAlignment="Bottom" Style="{DynamicResource FlatUiButton}" Click="btnSaveSettings_Click" Width="163" HorizontalAlignment="Right"/>
     </Grid>
 </UserControl>

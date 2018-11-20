@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:iniTool"
-        xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing" x:Class="iniTool.MainWindow"
+        x:Class="iniTool.MainWindow"
         mc:Ignorable="d"
         Title="iniTool" Height="500" Width="1042.667" Icon="img/master.png" WindowStartupLocation="CenterScreen" MinHeight="500" MinWidth="700" Initialized="Window_Loaded">
     <Window.TaskbarItemInfo>
@@ -15,49 +15,49 @@
             <ColumnDefinition Width="1*" MaxWidth="70" MinWidth="35"/>
             <ColumnDefinition Width="20*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel x:Name="stSidebar" Grid.Column="0" Background="{DynamicResource primary.turquoise}" Height="auto">
+        <StackPanel x:Name="StSidebar" Grid.Column="0" Background="{DynamicResource Primary.Turquoise}" Height="auto">
             <StackPanel.Effect>
                 <DropShadowEffect Direction="0" BlurRadius="4" ShadowDepth="3" Color="#FF9D9D9D"/>
             </StackPanel.Effect>
-            <Button x:Name="btnMain" Height="{Binding ActualWidth, ElementName=btnMain}" Width="Auto" BorderBrush="{x:Null}" Foreground="{x:Null}" Style="{DynamicResource FlatUIMenuButton}" Click="BtnMain_Click">
+            <Button x:Name="BtnMain" Height="{Binding ActualWidth, ElementName=BtnMain}" Width="Auto" BorderBrush="{x:Null}" Foreground="{x:Null}" Style="{DynamicResource FlatUiButton}" Click="BtnMain_Click">
                 <Button.Background>
                     <ImageBrush ImageSource="img/icons8-home-1024.png"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="btnOpenNewWorkspace" Height="{Binding ActualWidth, ElementName=btnOpenNewWorkspace}" Style="{DynamicResource FlatUIMenuButton}" Width="Auto" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="BtnOpenNewWorkspace_Click">
+            <Button x:Name="BtnOpenNewWorkspace" Height="{Binding ActualWidth, ElementName=BtnOpenNewWorkspace}" Style="{DynamicResource FlatUiButton}" Width="Auto" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="BtnOpenNewWorkspace_Click">
                 <Button.Background>
                     <ImageBrush ImageSource="img/icons8-opened-folder-1024.png"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="btnSettings" Height="{Binding ActualWidth, ElementName=btnSettings}" Style="{DynamicResource FlatUIMenuButton}" Width="Auto" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="BtnSettings_Click">
+            <Button x:Name="BtnSettings" Height="{Binding ActualWidth, ElementName=BtnSettings}" Style="{DynamicResource FlatUiButton}" Width="Auto" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="BtnSettings_Click">
                 <Button.Background>
                     <ImageBrush ImageSource="img/icons8-services-1024.png"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="btnAbout" Height="{Binding ActualWidth, ElementName=btnAbout}" Style="{DynamicResource FlatUIMenuButton}" Width="Auto" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="BtnAbout_Click">
+            <Button x:Name="BtnAbout" Height="{Binding ActualWidth, ElementName=BtnAbout}" Style="{DynamicResource FlatUiButton}" Width="Auto" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="BtnAbout_Click">
                 <Button.Background>
                     <ImageBrush ImageSource="img/icons8-about-1024.png"/>
                 </Button.Background>
             </Button>
         </StackPanel>
-        <Grid x:Name="gridMainData" Grid.Column="1">
-            <DataGrid x:Name="dgListFileContent" Margin="10,50,60,90" AlternationCount="2" AutoGenerateColumns="False" CanUserAddRows="false" ItemsSource="{Binding }" MinRowHeight="20" AlternatingRowBackground="LightGray">
+        <Grid x:Name="GridMainData" Grid.Column="1">
+            <DataGrid x:Name="DgListFileContent" Margin="10,50,60,90" AlternationCount="2" AutoGenerateColumns="False" CanUserAddRows="false" ItemsSource="{Binding }" MinRowHeight="20" AlternatingRowBackground="LightGray">
                 <DataGrid.Columns>
-                    <DataGridCheckBoxColumn Header="Repair" Binding="{Binding isChecked, UpdateSourceTrigger=PropertyChanged}"/>
-                    <DataGridTextColumn Header="Project Name" Binding="{Binding projectName}" Width="2.5*" />
-                    <DataGridTextColumn Header="ID" Binding="{Binding projectID}" Width="1*"/>
-                    <DataGridTextColumn Header="GUID" Binding="{Binding projectGUID}" Width="3*"/>
-                    <DataGridTextColumn Header="PWProject" Binding="{Binding pwProject}" Width="3*"/>
-                    <DataGridTextColumn Header="PWProject GUID" Binding="{Binding pwProjectGUID}" Width="3*"/>
-                    <DataGridTextColumn Header="Root_Specs_Dir" Binding="{Binding rootSpecsDir}" Width="3*"/>
-                    <DataGridTextColumn Header="Root_Modules_Dir" Binding="{Binding rootModulesDir}" Width="3*"/>
-                    <DataGridTextColumn Header="Modules_Ini_File" Binding="{Binding modulesIniFile}" Width="3*"/>
+                    <DataGridCheckBoxColumn Header="Repair" Binding="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}"/>
+                    <DataGridTextColumn Header="Project Name" Binding="{Binding ProjectName}" Width="2.5*" />
+                    <DataGridTextColumn Header="ID" Binding="{Binding ProjectId}" Width="1*"/>
+                    <DataGridTextColumn Header="GUID" Binding="{Binding ProjectGuid}" Width="3*"/>
+                    <DataGridTextColumn Header="PWProject" Binding="{Binding PwProject}" Width="3*"/>
+                    <DataGridTextColumn Header="PWProject GUID" Binding="{Binding PwProjectGuid}" Width="3*"/>
+                    <DataGridTextColumn Header="Root_Specs_Dir" Binding="{Binding RootSpecsDir}" Width="3*"/>
+                    <DataGridTextColumn Header="Root_Modules_Dir" Binding="{Binding RootModulesDir}" Width="3*"/>
+                    <DataGridTextColumn Header="Modules_Ini_File" Binding="{Binding ModulesIniFile}" Width="3*"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <Button x:Name="btnConfirmAction" Content="Confirm Changes" Margin="0,0,55.001,10" VerticalAlignment="Bottom" Style="{DynamicResource FlatUIButton}" Click="btnConfirmAction_Click" Width="150" HorizontalAlignment="Right"/>
-            <Label x:Name="lblEditFilesTitle" Content="Edit Files" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top" FontSize="16" />
+            <Button x:Name="BtnConfirmAction" Content="Confirm Changes" Margin="0,0,55.001,10" VerticalAlignment="Bottom" Style="{DynamicResource FlatUiButton}" Click="btnConfirmAction_Click" Width="150" HorizontalAlignment="Right"/>
+            <Label x:Name="LblEditFilesTitle" Content="Edit Files" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top" FontSize="16" />
         </Grid>
-        <local:SettingsUserControl x:Name="ucSettings" Grid.Column="1" Margin="0,0,0,0" Visibility="Hidden"/>
-        <local:AboutUserControl x:Name="ucAbout" Grid.Column="1" Height="Auto" Visibility="Hidden"/>
+        <local:SettingsUserControl x:Name="UcSettings" Grid.Column="1" Margin="0,0,0,0" Visibility="Hidden"/>
+        <local:AboutUserControl x:Name="UcAbout" Grid.Column="1" Height="Auto" Visibility="Hidden"/>
     </Grid>
 </Window>

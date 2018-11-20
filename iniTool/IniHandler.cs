@@ -8,9 +8,9 @@ namespace iniTool
     *   https://www.codeproject.com/Articles/1966/An-INI-file-handling-class-using-C
     *   All credits go to the amazing folks on CodeProject
     */
-    class IniHandler 
+    internal class IniHandler 
     {
-        private string path;
+        private readonly string _path;
 
         [DllImport("KERNEL32.DLL")]
         private static extern long WritePrivateProfileString(string section,
@@ -24,9 +24,9 @@ namespace iniTool
         /// iniHandler Constructor.
         /// </summary>
         /// <PARAM name="INIPath"></PARAM>
-        public IniHandler(string INIPath)
+        public IniHandler(string iniPath)
         {
-            path = INIPath;
+            _path = iniPath;
         }
         /// <summary>
         /// Write Data to the INI File
@@ -37,9 +37,9 @@ namespace iniTool
         /// Key Name
         /// <PARAM name="Value"></PARAM>
         /// Value Name
-        public void IniWriteValue(string Section, string Key, string Value)
+        public void IniWriteValue(string section, string key, string value)
         {
-            WritePrivateProfileString(Section, Key, Value, this.path);
+            WritePrivateProfileString(section, key, value, _path);
         }
 
         /// <summary>
@@ -48,10 +48,10 @@ namespace iniTool
         /// <PARAM name="Section"></PARAM>
         /// <PARAM name="Key"></PARAM>
         /// <returns></returns>
-        public string IniReadValue(string Section, string Key)
+        public string IniReadValue(string section, string key)
         {
-            StringBuilder temp = new StringBuilder(255);
-            int i = GetPrivateProfileString(Section, Key, "", temp, 255, this.path);
+            var temp = new StringBuilder(255);
+            GetPrivateProfileString(section, key, "", temp, 255, _path);
             return temp.ToString();
 
         }

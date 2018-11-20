@@ -1,18 +1,16 @@
-﻿using System.Collections;
-
-namespace iniTool
+﻿namespace iniTool
 {
-    class Content
+    internal class Content
     {
-        public string folderPath { get; set; }
-        public string projectName { get; set; }
-        public string projectID { get; set; }
-        public string projectGUID { get; set; }
-        public string pwProject { get; set; }
-        public string pwProjectGUID { get; set; }
-        public string rootSpecsDir { get; set; }
-        public string rootModulesDir { get; set; }
-        public string modulesIniFile { get; set; }
-        public bool isChecked { get; set; }
+        public string FolderPath { get; set; }
+        public string ProjectName { get; set; }
+        public string ProjectId { get; set; }
+        public string ProjectGuid { get; set; }
+        public string PwProject { get; set; }
+        public string PwProjectGuid { get; set; }
+        public string RootSpecsDir { get; set; }
+        public string RootModulesDir { get; set; }
+        public string ModulesIniFile { get; set; }
+        public bool IsChecked { get; set; }
     }
 }

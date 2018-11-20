@@ -11,28 +11,26 @@
     </Style>
 
     <!-- Static BUHLER color brushes -->
-    <SolidColorBrush x:Key="primary.turquoise" Color="#FF009B91"/>
-    <SolidColorBrush x:Key="primary.deepblue" Color="#FF00324B"/>
-    <SolidColorBrush x:Key="primary.white" Color="#FFFFFFFF"/>
-    <SolidColorBrush x:Key="primary.black" Color="#FF000000"/>
-    <SolidColorBrush x:Key="highlight.red" Color="#FFE6003C"/>
-    <SolidColorBrush x:Key="highlight.orange" Color="#FFFF9B32"/>
-    <SolidColorBrush x:Key="highlight.lightgreen" Color="#FFE6E100"/>
-    <SolidColorBrush x:Key="highlight.lightblue" Color="#FF87C8F0"/>
-    <SolidColorBrush x:Key="greyscale.eightyfive" Color="#FF262626"/>
-    <SolidColorBrush x:Key="greyscale.fourtyfive" Color="#FF8C8C8C"/>
-    <SolidColorBrush x:Key="event.pressed" Color="#FF004466"/>
+    <SolidColorBrush x:Key="Primary.Turquoise" Color="#FF009B91"/>
+    <SolidColorBrush x:Key="Primary.Deepblue" Color="#FF00324B"/>
+    <SolidColorBrush x:Key="Highlight.Red" Color="#FFE6003C"/>
+    <SolidColorBrush x:Key="Highlight.Orange" Color="#FFFF9B32"/>
+    <SolidColorBrush x:Key="Highlight.Lightgreen" Color="#FFE6E100"/>
+    <SolidColorBrush x:Key="Highlight.Lightblue" Color="#FF87C8F0"/>
+    <SolidColorBrush x:Key="Greyscale.Eightyfive" Color="#FF262626"/>
+    <SolidColorBrush x:Key="Greyscale.Fourtyfive" Color="#FF8C8C8C"/>
+    <SolidColorBrush x:Key="Event.Pressed" Color="#FF00324B"/>
 
     <!-- Static color brushes -->
     <SolidColorBrush x:Key="Button.Disabled" Color="#FFF4F4F4"/>
     <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
     <!-- Styles -->
 
-    <!-- FlatUIButton -->
-    <Style x:Key="FlatUIButton" TargetType="{x:Type Button}">
+    <!-- FlatUiButton -->
+    <Style x:Key="FlatUiButton" TargetType="{x:Type Button}">
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
-        <Setter Property="Background" Value="{StaticResource primary.turquoise}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource primary.turquoise}"/>
+        <Setter Property="Background" Value="{StaticResource Primary.Turquoise}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource Primary.Turquoise}"/>
         <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -52,13 +50,13 @@
                             <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter Property="Background" TargetName="border" Value="{StaticResource primary.deepblue}"/>
-                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource primary.deepblue}"/>
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource Primary.Deepblue}"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Primary.Deepblue}"/>
                             <Setter Property="Foreground" Value="White"/>
                         </Trigger>
                         <Trigger Property="IsPressed" Value="true">
-                            <Setter Property="Background" TargetName="border" Value="{StaticResource event.pressed}"/>
-                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource event.pressed}"/>
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource Event.Pressed}"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Event.Pressed}"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled}"/>
@@ -70,50 +68,10 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style x:Key="FlatUILabel" TargetType="{x:Type Label}">
+    <Style x:Key="FlatUiLabel" TargetType="{x:Type Label}">
         <Setter Property="FontFamily" Value="Segoe UI"/>
         <Setter Property="FontSize" Value="13"/>
         <Setter Property="VerticalAlignment" Value="Top"/>
         <Setter Property="HorizontalAlignment" Value="Left"/>
-    </Style>
-    <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
-    <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
-    <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
-    <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
-    <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
-    <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
-    <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
-    <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
-    <Style x:Key="FlatUIMenuButton" TargetType="{x:Type Button}">
-        <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
-        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="HorizontalContentAlignment" Value="Center"/>
-        <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="Padding" Value="1"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type Button}">
-                    <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
-                        <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsDefaulted" Value="true">
-                            <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
-                        </Trigger>
-                        <Trigger Property="IsPressed" Value="true">
-                            <Setter Property="Background" TargetName="border" Value="{StaticResource primary.deepblue}"/>
-                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource primary.deepblue}"/>
-                        </Trigger>
-                        <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
-                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
-                            <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
     </Style>
 </ResourceDictionary>
