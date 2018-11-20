@@ -45,13 +45,26 @@ namespace iniTool
         }
 
         /// <summary>
+        /// Creates a preferences.ini file and adds default values
+        /// </summary>
+        public void SetDefaultPreferences()
+        {
+            iniHandler.IniWriteValue("PATHVALUES", "ModulesIniFile", @"%CUSTOM_ROOT_PROD%\modules\modules.ini");
+            iniHandler.IniWriteValue("PATHVALUES", "RootModulesDir", @"%CUSTOM_ROOT_PROD%\modules");
+            iniHandler.IniWriteValue("PATHVALUES", "RootSpecsDir", @"%CUSTOM_ROOT_PROD%\Specs\Metric");
+            iniHandler.IniWriteValue("GENERAL", "FolderPrefix", "Proj");
+            iniHandler.IniWriteValue("GENERAL", "CUAE", "false");
+            SetPreferencesStatus();
+        }
+
+        /// <summary>
         /// Get the path from Root_Specs_Dir
         /// </summary>
         /// <returns name="rootSpecsDir"></returns>
         /// Returns the path.
         public string GetRootSpecsDir()
         {
-            string rootSpecsDir = iniHandler.IniReadValue("PATHVALUES", "Root_Specs_Dir");
+            string rootSpecsDir = iniHandler.IniReadValue("PATHVALUES", "RootSpecsDir");
 
             if (rootSpecsDir != null && rootSpecsDir != "")
             {
@@ -71,7 +84,7 @@ namespace iniTool
         /// Returns the path.
         public string GetRootModulesDir()
         {
-            string rootModulesDir = iniHandler.IniReadValue("PATHVALUES", "Root_Modules_Dir");
+            string rootModulesDir = iniHandler.IniReadValue("PATHVALUES", "RootModulesDir");
 
             if (rootModulesDir != null && rootModulesDir != "")
             {
@@ -91,7 +104,7 @@ namespace iniTool
         /// Returns the path.
         public string GetModulesIniFile()
         {
-            string modulesIniFile = iniHandler.IniReadValue("PATHVALUES", "Modules_Ini_File");
+            string modulesIniFile = iniHandler.IniReadValue("PATHVALUES", "ModulesIniFile");
 
             if (modulesIniFile != null && modulesIniFile != "")
             {
@@ -129,18 +142,6 @@ namespace iniTool
         }
 
         /// <summary>
-        /// Creates a preferences.ini file and adds default values
-        /// </summary>
-        public void SetDefaultPreferences()
-        {
-            iniHandler.IniWriteValue("PATHVALUES", "ModulesIniFile", @"%CUSTOM_ROOT_PROD%\modules\modules.ini");
-            iniHandler.IniWriteValue("PATHVALUES", "RootModulesDir", @"%CUSTOM_ROOT_PROD%\modules");
-            iniHandler.IniWriteValue("PATHVALUES", "RootSpecsDir", @"%CUSTOM_ROOT_PROD%\Specs\Metric");
-            iniHandler.IniWriteValue("GENERAL", "FolderPrefix", "Proj");
-            iniHandler.IniWriteValue("GENERAL", "CUAE", "false");
-            SetPreferencesStatus();
-        }
-        /// <summary>
         /// Gets the folder prefix.
         /// </summary>
         /// <returns name="prefix"></returns>
@@ -157,6 +158,17 @@ namespace iniTool
             {
                 MessageBox.Show("No workspace selected!", "Error", MessageBoxButton.OK);
                 return null;
+            }
+        }
+        public bool CanUserApproveEdits()
+        {
+            if (iniHandler.IniReadValue("GENERAL", "CUAE") == "True")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
     }

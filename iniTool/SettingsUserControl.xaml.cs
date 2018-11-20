@@ -32,6 +32,7 @@ namespace iniTool
             tbRootModulesDir.Text = resEdit.GetRootModulesDir();
             tbModulesIniFile.Text = resEdit.GetModulesIniFile();
             tbPrefix.Text = resEdit.GetPrefix();
+            cbCanUserApproveEdits.IsChecked = resEdit.CanUserApproveEdits();
         }
     }
 }
