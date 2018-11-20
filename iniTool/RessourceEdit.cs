@@ -3,9 +3,9 @@ using System.Windows;
 
 namespace iniTool
 {
-    class RessourceEdit
+    internal class RessourceEdit
     {
-        IniHandler iniHandler = new IniHandler(@".\preferences.ini");
+        private readonly IniHandler _iniHandler = new IniHandler(@".\preferences.ini");
 
         /// <summary>
         /// Gets the path of the workspace.
@@ -14,9 +14,9 @@ namespace iniTool
         /// Returns the path.
         public string GetWorkspace()
         {
-            string workspacePath = iniHandler.IniReadValue("GENERAL", "workspacePath");
+            string workspacePath = _iniHandler.IniReadValue("GENERAL", "workspacePath");
 
-            if (workspacePath != null && workspacePath != "")
+            if (!string.IsNullOrEmpty(workspacePath))
             {
                 return workspacePath;
             }
@@ -36,7 +36,7 @@ namespace iniTool
         {
             try
             {
-                iniHandler.IniWriteValue("GENERAL", "workspacePath", dir);
+                _iniHandler.IniWriteValue("GENERAL", "workspacePath", dir);
             }
             catch (Exception ex)
             {
@@ -49,11 +49,11 @@ namespace iniTool
         /// </summary>
         public void SetDefaultPreferences()
         {
-            iniHandler.IniWriteValue("PATHVALUES", "ModulesIniFile", @"%CUSTOM_ROOT_PROD%\modules\modules.ini");
-            iniHandler.IniWriteValue("PATHVALUES", "RootModulesDir", @"%CUSTOM_ROOT_PROD%\modules");
-            iniHandler.IniWriteValue("PATHVALUES", "RootSpecsDir", @"%CUSTOM_ROOT_PROD%\Specs\Metric");
-            iniHandler.IniWriteValue("GENERAL", "FolderPrefix", "Proj");
-            iniHandler.IniWriteValue("GENERAL", "CUAE", "false");
+            _iniHandler.IniWriteValue("PATHVALUES", "ModulesIniFile", @"%CUSTOM_ROOT_PROD%\modules\modules.ini");
+            _iniHandler.IniWriteValue("PATHVALUES", "RootModulesDir", @"%CUSTOM_ROOT_PROD%\modules");
+            _iniHandler.IniWriteValue("PATHVALUES", "RootSpecsDir", @"%CUSTOM_ROOT_PROD%\Specs\Metric");
+            _iniHandler.IniWriteValue("GENERAL", "FolderPrefix", "Proj");
+            _iniHandler.IniWriteValue("GENERAL", "CUAE", "false");
             SetPreferencesStatus();
         }
 
@@ -64,9 +64,9 @@ namespace iniTool
         /// Returns the path.
         public string GetRootSpecsDir()
         {
-            string rootSpecsDir = iniHandler.IniReadValue("PATHVALUES", "RootSpecsDir");
+            string rootSpecsDir = _iniHandler.IniReadValue("PATHVALUES", "RootSpecsDir");
 
-            if (rootSpecsDir != null && rootSpecsDir != "")
+            if (!string.IsNullOrEmpty(rootSpecsDir))
             {
                 return rootSpecsDir;
             }
@@ -84,9 +84,9 @@ namespace iniTool
         /// Returns the path.
         public string GetRootModulesDir()
         {
-            string rootModulesDir = iniHandler.IniReadValue("PATHVALUES", "RootModulesDir");
+            string rootModulesDir = _iniHandler.IniReadValue("PATHVALUES", "RootModulesDir");
 
-            if (rootModulesDir != null && rootModulesDir != "")
+            if (!string.IsNullOrEmpty(rootModulesDir))
             {
                 return rootModulesDir;
             }
@@ -104,9 +104,9 @@ namespace iniTool
         /// Returns the path.
         public string GetModulesIniFile()
         {
-            string modulesIniFile = iniHandler.IniReadValue("PATHVALUES", "ModulesIniFile");
+            string modulesIniFile = _iniHandler.IniReadValue("PATHVALUES", "ModulesIniFile");
 
-            if (modulesIniFile != null && modulesIniFile != "")
+            if (!string.IsNullOrEmpty(modulesIniFile))
             {
                 return modulesIniFile;
             }
@@ -122,7 +122,7 @@ namespace iniTool
         /// </summary>
         public void SetPreferencesStatus()
         {
-            iniHandler.IniWriteValue("APPLICATION_DO_NOT_EDIT", "isPreferencesLoaded", "true");
+            _iniHandler.IniWriteValue("APPLICATION_DO_NOT_EDIT", "isPreferencesLoaded", "true");
         }
 
         /// <summary>
@@ -130,7 +130,7 @@ namespace iniTool
         /// </summary>
         public bool GetPreferencesStatus()
         {
-            string status = iniHandler.IniReadValue("APPLICATION_DO_NOT_EDIT", "isPreferencesLoaded");
+            string status = _iniHandler.IniReadValue("APPLICATION_DO_NOT_EDIT", "isPreferencesLoaded");
             if (status == "true")
             {
                 return true;
@@ -148,9 +148,9 @@ namespace iniTool
         /// Returns the prefix.
         public string GetPrefix()
         {
-            string prefix = iniHandler.IniReadValue("GENERAL", "FolderPrefix");
+            string prefix = _iniHandler.IniReadValue("GENERAL", "FolderPrefix");
 
-            if (prefix != null && prefix != "")
+            if (!string.IsNullOrEmpty(prefix))
             {
                 return prefix;
             }
@@ -162,7 +162,7 @@ namespace iniTool
         }
         public bool CanUserApproveEdits()
         {
-            if (iniHandler.IniReadValue("GENERAL", "CUAE") == "True")
+            if (_iniHandler.IniReadValue("GENERAL", "CUAE") == "True")
             {
                 return true;
             }

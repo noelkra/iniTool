@@ -5,20 +5,18 @@ namespace iniTool
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow
     {
-        FileHandler fileHandler;
-        DialogHandler dialogHandler;
-        RessourceEdit resEdit;
-        SettingsUserControl settingsUserControl;
-        WaitingDialog waitingDialog;
+        private readonly FileHandler _fileHandler;
+        private readonly DialogHandler _dialogHandler;
+        private readonly RessourceEdit _resEdit;
+        private WaitingDialog _waitingDialog;
 
         public MainWindow()
         {
-            fileHandler = new FileHandler();
-            dialogHandler = new DialogHandler();
-            resEdit = new RessourceEdit();
-            settingsUserControl = new SettingsUserControl();
+            _fileHandler = new FileHandler();
+            _dialogHandler = new DialogHandler();
+            _resEdit = new RessourceEdit();
             InitializeComponent();
         }
 
@@ -43,15 +41,15 @@ namespace iniTool
         private void BtnOpenNewWorkspace_Click(object sender, RoutedEventArgs e)
         {
             //If folder chosen successfully, save to ini-file
-            string dir = dialogHandler.OpenFolderDialog();
-            resEdit.SetWorkspace(dir);
-            openFiles(dir);
+            string dir = _dialogHandler.OpenFolderDialog();
+            _resEdit.SetWorkspace(dir);
+            OpenFiles(dir);
         }
         private void Window_Loaded(object sender, System.EventArgs e)
         {
-            if (!resEdit.GetPreferencesStatus())
+            if (!_resEdit.GetPreferencesStatus())
             {
-                resEdit.SetDefaultPreferences();
+                _resEdit.SetDefaultPreferences();
             }
         }
         private void btnConfirmAction_Click(object sender, RoutedEventArgs e)
@@ -60,32 +58,32 @@ namespace iniTool
             if (result == MessageBoxResult.Yes)
             {
                 //Repair the Files and reload them afterwards.
-                fileHandler.RepairFiles();
-                openFiles(resEdit.GetWorkspace());
+                _fileHandler.RepairFiles();
+                OpenFiles(_resEdit.GetWorkspace());
             }
         }
-        public void openFiles(string dir)
+        public void OpenFiles(string dir)
         {
-            waitingDialog = null;
-            if (dir != null && dir != "")
+            _waitingDialog = null;
+            if (!string.IsNullOrEmpty(dir))
             {
-                waitingDialog = new WaitingDialog();
-                setLoading(true);
-                fileHandler.LoadFileContent(dir);
+                _waitingDialog = new WaitingDialog();
+                SetLoading(true);
+                _fileHandler.LoadFileContent(dir);
                 dgListFileContent.ItemsSource = null;
-                dgListFileContent.ItemsSource = fileHandler.getFileContent();
-                setLoading(false);
+                dgListFileContent.ItemsSource = _fileHandler.GetFileContent();
+                SetLoading(false);
             }
         }
-        private void setLoading(bool loading)
+        private void SetLoading(bool loading)
         {
             if (loading)
             {
-                waitingDialog.Show();
+                _waitingDialog.Show();
             }
             else
             {
-                waitingDialog.Close();
+                _waitingDialog.Close();
             }
         }
     }

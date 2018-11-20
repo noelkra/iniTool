@@ -43,15 +43,15 @@
         <Grid x:Name="gridMainData" Grid.Column="1">
             <DataGrid x:Name="dgListFileContent" Margin="10,50,60,90" AlternationCount="2" AutoGenerateColumns="False" CanUserAddRows="false" ItemsSource="{Binding }" MinRowHeight="20" AlternatingRowBackground="LightGray">
                 <DataGrid.Columns>
-                    <DataGridCheckBoxColumn Header="Repair" Binding="{Binding isChecked, UpdateSourceTrigger=PropertyChanged}"/>
-                    <DataGridTextColumn Header="Project Name" Binding="{Binding projectName}" Width="2.5*" />
-                    <DataGridTextColumn Header="ID" Binding="{Binding projectID}" Width="1*"/>
-                    <DataGridTextColumn Header="GUID" Binding="{Binding projectGUID}" Width="3*"/>
-                    <DataGridTextColumn Header="PWProject" Binding="{Binding pwProject}" Width="3*"/>
-                    <DataGridTextColumn Header="PWProject GUID" Binding="{Binding pwProjectGUID}" Width="3*"/>
-                    <DataGridTextColumn Header="Root_Specs_Dir" Binding="{Binding rootSpecsDir}" Width="3*"/>
-                    <DataGridTextColumn Header="Root_Modules_Dir" Binding="{Binding rootModulesDir}" Width="3*"/>
-                    <DataGridTextColumn Header="Modules_Ini_File" Binding="{Binding modulesIniFile}" Width="3*"/>
+                    <DataGridCheckBoxColumn Header="Repair" Binding="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}"/>
+                    <DataGridTextColumn Header="Project Name" Binding="{Binding ProjectName}" Width="2.5*" />
+                    <DataGridTextColumn Header="ID" Binding="{Binding ProjectId}" Width="1*"/>
+                    <DataGridTextColumn Header="GUID" Binding="{Binding ProjectGuid}" Width="3*"/>
+                    <DataGridTextColumn Header="PWProject" Binding="{Binding PwProject}" Width="3*"/>
+                    <DataGridTextColumn Header="PWProject GUID" Binding="{Binding PwProjectGuid}" Width="3*"/>
+                    <DataGridTextColumn Header="Root_Specs_Dir" Binding="{Binding RootSpecsDir}" Width="3*"/>
+                    <DataGridTextColumn Header="Root_Modules_Dir" Binding="{Binding RootModulesDir}" Width="3*"/>
+                    <DataGridTextColumn Header="Modules_Ini_File" Binding="{Binding ModulesIniFile}" Width="3*"/>
                 </DataGrid.Columns>
             </DataGrid>
             <Button x:Name="btnConfirmAction" Content="Confirm Changes" Margin="0,0,55.001,10" VerticalAlignment="Bottom" Style="{DynamicResource FlatUIButton}" Click="btnConfirmAction_Click" Width="150" HorizontalAlignment="Right"/>

@@ -1,38 +1,37 @@
 ﻿using System.Windows;
-using System.Windows.Controls;
 
 namespace iniTool
 {
     /// <summary>
     /// Interaktionslogik für SettingsUserControl.xaml
     /// </summary>
-    public partial class SettingsUserControl : UserControl
+    public partial class SettingsUserControl
     {
-        RessourceEdit resEdit = new RessourceEdit();
-        IniHandler iniHandler;
+        private readonly RessourceEdit _resEdit = new RessourceEdit();
+        private readonly IniHandler _iniHandler;
 
         public SettingsUserControl()
         {
-            iniHandler = new IniHandler(@".\preferences.ini");
+            _iniHandler = new IniHandler(@".\preferences.ini");
             InitializeComponent();
         }
         private void btnSaveSettings_Click(object sender, RoutedEventArgs e)
         {
-            iniHandler.IniWriteValue("PATHVALUES", "ModulesIniFile", tbModulesIniFile.Text);
-            iniHandler.IniWriteValue("PATHVALUES", "RootModulesDir", tbRootModulesDir.Text);
-            iniHandler.IniWriteValue("PATHVALUES", "RootSpecsDir", tbRootSpecsDir.Text);
-            iniHandler.IniWriteValue("GENERAL", "FolderPrefix", tbPrefix.Text);
-            iniHandler.IniWriteValue("GENERAL", "CUAE", cbCanUserApproveEdits.IsChecked.ToString());
+            _iniHandler.IniWriteValue("PATHVALUES", "ModulesIniFile", tbModulesIniFile.Text);
+            _iniHandler.IniWriteValue("PATHVALUES", "RootModulesDir", tbRootModulesDir.Text);
+            _iniHandler.IniWriteValue("PATHVALUES", "RootSpecsDir", tbRootSpecsDir.Text);
+            _iniHandler.IniWriteValue("GENERAL", "FolderPrefix", tbPrefix.Text);
+            _iniHandler.IniWriteValue("GENERAL", "CUAE", cbCanUserApproveEdits.IsChecked.ToString());
 
             MessageBox.Show("Settings saved!", "Successful", MessageBoxButton.OK, MessageBoxImage.Information);
         }
         private void settingsUserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            tbRootSpecsDir.Text = resEdit.GetRootSpecsDir();
-            tbRootModulesDir.Text = resEdit.GetRootModulesDir();
-            tbModulesIniFile.Text = resEdit.GetModulesIniFile();
-            tbPrefix.Text = resEdit.GetPrefix();
-            cbCanUserApproveEdits.IsChecked = resEdit.CanUserApproveEdits();
+            tbRootSpecsDir.Text = _resEdit.GetRootSpecsDir();
+            tbRootModulesDir.Text = _resEdit.GetRootModulesDir();
+            tbModulesIniFile.Text = _resEdit.GetModulesIniFile();
+            tbPrefix.Text = _resEdit.GetPrefix();
+            cbCanUserApproveEdits.IsChecked = _resEdit.CanUserApproveEdits();
         }
     }
 }

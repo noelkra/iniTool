@@ -1,13 +1,7 @@
-﻿using System.Windows;
-
-namespace iniTool
+﻿namespace iniTool
 {
-    class DialogHandler
+    internal class DialogHandler
     {
-        public DialogHandler()
-        {
-            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
-        }
         /// <summary>
         /// Creates and Shows an "Open File"-Dialog
         /// </summary>
@@ -19,7 +13,7 @@ namespace iniTool
 
             using (var dialog = new System.Windows.Forms.FolderBrowserDialog())
             {
-                System.Windows.Forms.DialogResult result = dialog.ShowDialog();
+                dialog.ShowDialog();
                 dir = dialog.SelectedPath;
             }
             return dir;

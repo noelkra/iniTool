@@ -5,26 +5,23 @@ using System.Windows;
 
 namespace iniTool
 {
-    class FileHandler
+    internal class FileHandler
     {
         //Declaration
-        private List<Content> contentList;
-        private RessourceEdit resEdit;
-        private ArrayList incorrectFiles;
-        private string correctRootSpecsDir;
-        private string correctRootModulesDir;
-        private string correctModulesIniFile;
-        private ArrayList pathToFile;
-        private string tempProjectName, tempProjectID, tempProjectGUID, tempPWProject, tempPWProjectGUID, tempRootSpecsDir, tempRootModulesDir, tempModulesIniFile;
-        private bool tempIsChecked;
-
+        private readonly List<Content> _contentList;
+        private readonly RessourceEdit _resEdit;
+        private readonly ArrayList _incorrectFiles;
+        private string _correctRootSpecsDir;
+        private string _correctRootModulesDir;
+        private string _correctModulesIniFile;
+        private string _tempProjectName, _tempProjectId, _tempProjectGuid, _tempPwProject, _tempPwProjectGuid, _tempRootSpecsDir, _tempRootModulesDir, _tempModulesIniFile;
+        private bool _tempIsChecked;
         //Constructor
         public FileHandler()
         {
-            resEdit = new RessourceEdit();
-            incorrectFiles = new ArrayList();
-            contentList = new List<Content>();
-            pathToFile = new ArrayList();
+            _resEdit = new RessourceEdit();
+            _incorrectFiles = new ArrayList();
+            _contentList = new List<Content>();
         }
         /// <summary>
         /// Get content form chosen directory.
@@ -33,10 +30,10 @@ namespace iniTool
         /// Path to Directory
         public void LoadFileContent(string dir) //TODO shorten and split into multiple methods
         {
-            correctRootSpecsDir = resEdit.GetRootSpecsDir();
-            correctRootModulesDir = resEdit.GetRootModulesDir();
-            correctModulesIniFile = resEdit.GetModulesIniFile();
-            contentList.Clear();
+            _correctRootSpecsDir = _resEdit.GetRootSpecsDir();
+            _correctRootModulesDir = _resEdit.GetRootModulesDir();
+            _correctModulesIniFile = _resEdit.GetModulesIniFile();
+            _contentList.Clear();
 
             //Variables for the correct Values
             string[] fileArray = null;
@@ -59,7 +56,7 @@ namespace iniTool
         }
         private void SetCorrectFiles(string[] fileArray, string dir)
         {
-            string prefix = resEdit.GetPrefix();
+            string prefix = _resEdit.GetPrefix();
             foreach (string filepath in fileArray)
             {
                 if (filepath.Substring(dir.Length, prefix.Length) != (prefix)) continue;
@@ -67,27 +64,27 @@ namespace iniTool
                 IniHandler configIniHandler = new IniHandler($@"{filepath}\Config\config.ini");
 
                 //get content form project.ini
-                tempProjectName = projIniHandler.IniReadValue("GENERAL", "PROJECTNAME");
-                tempProjectID = projIniHandler.IniReadValue("GENERAL", "PROJECTID");
-                tempProjectGUID = projIniHandler.IniReadValue("GENERAL", "PROJECTGUID");
-                tempPWProject = projIniHandler.IniReadValue("ProjectWise", "PWProject");
-                tempPWProjectGUID = projIniHandler.IniReadValue("ProjectWise", "PWProjectGUID");
+                _tempProjectName = projIniHandler.IniReadValue("GENERAL", "PROJECTNAME");
+                _tempProjectId = projIniHandler.IniReadValue("GENERAL", "PROJECTID");
+                _tempProjectGuid = projIniHandler.IniReadValue("GENERAL", "PROJECTGUID");
+                _tempPwProject = projIniHandler.IniReadValue("ProjectWise", "PWProject");
+                _tempPwProjectGuid = projIniHandler.IniReadValue("ProjectWise", "PWProjectGUID");
 
                 //get content from config.ini
-                tempRootSpecsDir = configIniHandler.IniReadValue("System", "Root_Specs_Dir");
-                tempRootModulesDir = configIniHandler.IniReadValue("System", "Root_Modules_Dir");
-                tempModulesIniFile = configIniHandler.IniReadValue("System", "Modules_Ini_File");
+                _tempRootSpecsDir = configIniHandler.IniReadValue("System", "Root_Specs_Dir");
+                _tempRootModulesDir = configIniHandler.IniReadValue("System", "Root_Modules_Dir");
+                _tempModulesIniFile = configIniHandler.IniReadValue("System", "Modules_Ini_File");
 
                 //Search for files
-                if (tempRootSpecsDir != this.correctRootSpecsDir || tempRootModulesDir != this.correctRootModulesDir || tempModulesIniFile != this.correctModulesIniFile) //MODULES INI FILE
+                if (_tempRootSpecsDir != _correctRootSpecsDir || _tempRootModulesDir != _correctRootModulesDir || _tempModulesIniFile != _correctModulesIniFile) //MODULES INI FILE
                 {
-                    tempIsChecked = true;
-                    incorrectFiles.Add(filepath + @"\Config\config.ini");
+                    _tempIsChecked = true;
+                    _incorrectFiles.Add(filepath + @"\Config\config.ini");
                 }
-                else { tempIsChecked = false; }
+                else { _tempIsChecked = false; }
 
                 //Add content to contentList
-                setContentList(filepath, tempIsChecked, tempProjectName, tempProjectID, tempProjectGUID, tempPWProject, tempPWProjectGUID, tempRootSpecsDir, tempRootModulesDir, tempModulesIniFile);
+                SetContentList(filepath, _tempIsChecked, _tempProjectName, _tempProjectId, _tempProjectGuid, _tempPwProject, _tempPwProjectGuid, _tempRootSpecsDir, _tempRootModulesDir, _tempModulesIniFile);
             }
         }
 
@@ -99,26 +96,26 @@ namespace iniTool
         public void RepairFiles()
         {
             //Get filepath for all files that need to get changed
-            foreach (string filepath in incorrectFiles)
+            foreach (string filepath in _incorrectFiles)
             {
                 IniHandler configIniHandler = new IniHandler(filepath);
-                tempRootSpecsDir = configIniHandler.IniReadValue("System", "Root_Specs_Dir");
-                tempRootModulesDir = configIniHandler.IniReadValue("System", "Root_Modules_Dir");
-                tempModulesIniFile = configIniHandler.IniReadValue("System", "Modules_Ini_File");
+                _tempRootSpecsDir = configIniHandler.IniReadValue("System", "Root_Specs_Dir");
+                _tempRootModulesDir = configIniHandler.IniReadValue("System", "Root_Modules_Dir");
+                _tempModulesIniFile = configIniHandler.IniReadValue("System", "Modules_Ini_File");
                 
                 //Get which variable needs to get changed
 
-                if (tempRootSpecsDir != correctRootSpecsDir) 
+                if (_tempRootSpecsDir != _correctRootSpecsDir) 
                 {
-                    configIniHandler.IniWriteValue("System", "Root_Specs_Dir", correctRootSpecsDir);
+                    configIniHandler.IniWriteValue("System", "Root_Specs_Dir", _correctRootSpecsDir);
                 }
-                if(tempRootModulesDir != correctRootModulesDir)
+                if(_tempRootModulesDir != _correctRootModulesDir)
                 {
-                    configIniHandler.IniWriteValue("System", "Root_Modules_Dir", correctRootModulesDir);
+                    configIniHandler.IniWriteValue("System", "Root_Modules_Dir", _correctRootModulesDir);
                 }
-                if(tempModulesIniFile != correctModulesIniFile)
+                if(_tempModulesIniFile != _correctModulesIniFile)
                 {
-                    configIniHandler.IniWriteValue("System", "Modules_Ini_File", correctModulesIniFile);
+                    configIniHandler.IniWriteValue("System", "Modules_Ini_File", _correctModulesIniFile);
                 }
             }
         }
@@ -126,28 +123,28 @@ namespace iniTool
         /// Returns the contentList
         /// </summary>
         /// <returns></returns>
-        public List<Content> getFileContent()
+        public List<Content> GetFileContent()
         {
-            return contentList;
+            return _contentList;
         }
 
         /// <summary>
         /// Adds the entity to the ContentList
         /// </summary>
-        private void setContentList(string directory, bool tempIsChecked, string tempProjectName, string tempProjectID, string tempProjectGUID, string tempPWProject, string tempPWProjectGUID, string tempRootSpecsDir, string tempRootModulesDir, string tempModulesIniFile)
+        private void SetContentList(string directory, bool tempIsChecked, string tempProjectName, string tempProjectId, string tempProjectGuid, string tempPwProject, string tempPwProjectGuid, string tempRootSpecsDir, string tempRootModulesDir, string tempModulesIniFile)
         {
-            contentList.Add(new Content()
+            _contentList.Add(new Content()
             {
-                folderPath = directory,
-                isChecked = tempIsChecked,
-                projectName = tempProjectName ?? "NoInformation",
-                projectID = tempProjectID ?? "NoInformation",
-                projectGUID = tempProjectGUID ?? "NoInformation",
-                pwProject = tempPWProject ?? "NoInformation",
-                pwProjectGUID = tempPWProjectGUID ?? "NoInformation",
-                rootSpecsDir = tempRootSpecsDir ?? "NoInformation",
-                rootModulesDir = tempRootModulesDir ?? "NoInformation",
-                modulesIniFile = tempModulesIniFile ?? "NoInformation"
+                FolderPath = directory,
+                IsChecked = tempIsChecked,
+                ProjectName = tempProjectName ?? "NoInformation",
+                ProjectId = tempProjectId ?? "NoInformation",
+                ProjectGuid = tempProjectGuid ?? "NoInformation",
+                PwProject = tempPwProject ?? "NoInformation",
+                PwProjectGuid = tempPwProjectGuid ?? "NoInformation",
+                RootSpecsDir = tempRootSpecsDir ?? "NoInformation",
+                RootModulesDir = tempRootModulesDir ?? "NoInformation",
+                ModulesIniFile = tempModulesIniFile ?? "NoInformation"
             });
         }
     }
