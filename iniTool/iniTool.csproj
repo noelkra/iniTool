@@ -97,7 +97,9 @@
     <Compile Include="AboutUserControl.xaml.cs">
       <DependentUpon>AboutUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Content.cs" />
+    <Compile Include="EntityContent.cs" />
+    <Compile Include="EntityFixer.cs" />
+    <Compile Include="EntitySelector.cs" />
     <Compile Include="ResourceEdit.cs" />
     <Compile Include="IniHandler.cs" />
     <Compile Include="SettingsUserControl.xaml.cs">

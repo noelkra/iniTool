@@ -1,6 +1,6 @@
 ﻿namespace iniTool
 {
-    internal class Content
+    internal class EntityContent
     {
         public string FolderPath { get; set; }
         public string ProjectName { get; set; }

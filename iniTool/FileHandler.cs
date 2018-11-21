@@ -7,8 +7,13 @@ namespace iniTool
 {
     internal class FileHandler
     {
+        /*
+         * TODO Will get replaced by classes EntitySelector.cs and EntityFixer.cs
+         * They will handle the same stuff as this class but more organized and
+         * ready for dynamic settings and dynamic content.
+         */
         //Declaration
-        private readonly List<Content> _contentList;
+        private readonly List<EntityContent> _contentList;
         private readonly ArrayList _incorrectFiles;
         private readonly ResourceEdit _resEdit;
         private bool _tempIsChecked;
@@ -30,7 +35,7 @@ namespace iniTool
         {
             _resEdit = new ResourceEdit();
             _incorrectFiles = new ArrayList();
-            _contentList = new List<Content>();
+            _contentList = new List<EntityContent>();
         }
 
         /// <summary>
@@ -132,7 +137,7 @@ namespace iniTool
         ///     Returns the contentList
         /// </summary>
         /// <returns></returns>
-        public List<Content> GetFileContent()
+        public List<EntityContent> GetFileContent()
         {
             return _contentList;
         }
@@ -144,7 +149,7 @@ namespace iniTool
             string tempProjectGuid, string tempPwProject, string tempPwProjectGuid, string tempRootSpecsDir,
             string tempRootModulesDir, string tempModulesIniFile)
         {
-            _contentList.Add(new Content
+            _contentList.Add(new EntityContent
             {
                 FolderPath = directory,
                 IsChecked = tempIsChecked,
@@ -159,14 +164,17 @@ namespace iniTool
             });
         }
 
-        public ArrayList SetCorrectValues(string iniPath) //TODO get arrays for section and key to make application dynamic. 
+        public ArrayList SetCorrectValues(string iniPath, string[] section, string key) //TODO get arrays for section and key to make application dynamic. 
         {
+            /*
+             * This Method should get the path to the Files.
+             * On calling of the method, the section and the keys get read out.
+             * With this information given (assumed that the key and section are related), the content from the
+             * corresponding ini-files gets saved to the correctValueList. This gets returned
+             */
             //TODO the values should get added to the correctValueList. The return parameters should be iterated with a loop to add them to SetContentList.
             var iniHandler = new IniHandler(iniPath);
             ArrayList correctValueList = new ArrayList();
-            correctValueList.Add(iniHandler.IniReadValue("car","car"));
-            correctValueList.Add(iniHandler.IniReadValue($"{iniPath}", "car"));
-            correctValueList.Add(iniHandler.IniReadValue("car", "car"));
             return correctValueList;
         }
     }
