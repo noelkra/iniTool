@@ -19,7 +19,7 @@
     <SolidColorBrush x:Key="Highlight.Lightblue" Color="#FF87C8F0"/>
     <SolidColorBrush x:Key="Greyscale.Eightyfive" Color="#FF262626"/>
     <SolidColorBrush x:Key="Greyscale.Fourtyfive" Color="#FF8C8C8C"/>
-    <SolidColorBrush x:Key="Event.Pressed" Color="#FF00324B"/>
+    <SolidColorBrush x:Key="Event.Pressed" Color="#004C73"/>
 
     <!-- Static color brushes -->
     <SolidColorBrush x:Key="Button.Disabled" Color="#FFF4F4F4"/>
