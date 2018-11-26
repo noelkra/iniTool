@@ -11,6 +11,8 @@ namespace iniTool
         private readonly DialogHandler _dialogHandler;
         private readonly ResourceEdit _resEdit;
         private WaitingDialog _waitingDialog;
+        private EntitySelector _entitySelector;
+        private EntityFixer _entityFixer;
 
         public MainWindow()
         {

@@ -12,7 +12,7 @@ namespace iniTool
         private string _tempModulesIniFile;
         private string _tempRootModulesDir;
         private string _tempRootSpecsDir;
-        private object _correctRootSpecsDir;
+        private string _correctRootSpecsDir;
         private string _correctRootModulesDir;
         private string _correctModulesIniFile;
 

@@ -8,7 +8,7 @@ namespace iniTool
     /*
      * This class gets all the entities from the ini files needed in the application.
      */
-    public class EntitySelector
+    internal class EntitySelector
     {
       
         private readonly string _workingDirectory;
@@ -31,7 +31,7 @@ namespace iniTool
         private bool _tempIsChecked;
 
 
-        public EntitySelector(string workingDirectory)
+        internal EntitySelector(string workingDirectory)
         {
             _workingDirectory = workingDirectory + @"\";
             _entityContent = new List<EntityContent>();
@@ -42,7 +42,6 @@ namespace iniTool
         public void SelectEntityContents() //TODO shorten and split into multiple methods
         {
             //Get all Directories
-            
             try
             {
                 _directoryOfFoldersList = Directory.GetDirectories(_workingDirectory);
@@ -56,7 +55,10 @@ namespace iniTool
             if (_directoryOfFoldersList != null) ReadFileContent(_directoryOfFoldersList);
         }
 
-        public List<EntityContent> GetEntityContents() => _entityContent;
+        public List<EntityContent> GetEntityContents()
+        {
+            return _entityContent;
+        }
 
         private void ReadFileContent(IEnumerable<string> directoryOfFoldersList)
         {
