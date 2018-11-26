@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 
 namespace iniTool
 {
@@ -8,7 +9,7 @@ namespace iniTool
     internal class EntityFixer
     {
         private readonly ResourceEdit _resEdit;
-        private readonly IEnumerable<string> _incorrectFiles;
+        private readonly ArrayList _incorrectFiles;
         private string _tempModulesIniFile;
         private string _tempRootModulesDir;
         private string _tempRootSpecsDir;
@@ -16,14 +17,15 @@ namespace iniTool
         private string _correctRootModulesDir;
         private string _correctModulesIniFile;
 
-        public EntityFixer(IEnumerable<string> incorrectFiles)
+        public EntityFixer(ArrayList incorrectFiles)
         {
             _resEdit = new ResourceEdit();
             _incorrectFiles = incorrectFiles;
+            SetCorrectValues();
         }
 
         /// <summary>
-        ///     Changes the files content and therefore repairs it.
+        ///     Gets the wrong values from the files and changes them if needed.
         /// </summary>
         /// Gets the correct values from the ini-File and compares the actual value from the files.
         /// If the values aren't the same, the wrong values get changed and corrected.
@@ -37,7 +39,14 @@ namespace iniTool
                 _tempRootModulesDir = configIniHandler.IniReadValue("System", "Root_Modules_Dir");
                 _tempModulesIniFile = configIniHandler.IniReadValue("System", "Modules_Ini_File");
 
-                //Get which variable needs to get changed
+                /*
+                 * TODO Check if user wants to correct file
+                 * Maybe take the whole EntityList as parameter so that the User can choose
+                 * which Item to change by clicking on the checkbox.
+                 *
+                 * [Important]
+                 * Check if value updates on changes to checkbox.IsChecked → Is this value also updated here (static method?)
+                 */
 
                 if (_tempRootSpecsDir != _correctRootSpecsDir)
                     configIniHandler.IniWriteValue("System", "Root_Specs_Dir", _correctRootSpecsDir);

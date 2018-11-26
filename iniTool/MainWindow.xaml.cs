@@ -7,7 +7,6 @@ namespace iniTool
     /// </summary>
     public partial class MainWindow
     {
-        private readonly FileHandler _fileHandler;
         private readonly DialogHandler _dialogHandler;
         private readonly ResourceEdit _resEdit;
         private WaitingDialog _waitingDialog;
@@ -16,7 +15,6 @@ namespace iniTool
 
         public MainWindow()
         {
-            _fileHandler = new FileHandler();
             _dialogHandler = new DialogHandler();
             _resEdit = new ResourceEdit();
             InitializeComponent();
@@ -56,12 +54,18 @@ namespace iniTool
         }
         private void btnConfirmAction_Click(object sender, RoutedEventArgs e)
         {
+            _entityFixer = new EntityFixer(_entitySelector.GetIncorrectFilesList());
             var result = MessageBox.Show("This operation cannot be undone. Are you sure you want to continue?", "Confirm action", MessageBoxButton.YesNo);
             if (result != MessageBoxResult.Yes) return;
             //Repair the Files and reload them afterwards.
-            _fileHandler.RepairFiles();
+            _entityFixer.RepairFiles();
             OpenFiles(_resEdit.GetWorkspace());
         }
+
+        /// <summary>
+        /// Opens a new path
+        /// </summary>
+        /// <param name="dir"></param>
         public void OpenFiles(string dir)
         {
             //initialize a new instance of EntitySelector

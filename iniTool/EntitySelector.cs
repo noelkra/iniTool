@@ -36,6 +36,7 @@ namespace iniTool
             _workingDirectory = workingDirectory + @"\";
             _entityContent = new List<EntityContent>();
             _resEdit = new ResourceEdit();
+            _incorrectFiles = new ArrayList();
             SetCorrectValues();
         }
         /// <summary>
