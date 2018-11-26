@@ -88,7 +88,7 @@ namespace iniTool
                     _tempModulesIniFile != _correctModulesIniFile) //MODULES INI FILE
                 {
                     _tempIsChecked = true;
-                    _incorrectFiles.Add($@"{filepath}\Config\config.ini"); //TODO was here
+                    _incorrectFiles.Add($@"{filepath}\Config\config.ini"); //TODO check onenote for infos (Buhler AG → iniTool)
                 }
                 else
                 {
