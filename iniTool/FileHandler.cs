@@ -43,7 +43,7 @@ namespace iniTool
         /// </summary>
         /// <PARAM name="dir"></PARAM>
         /// Path to Directory
-        public void LoadFileContent(string dir) //TODO shorten and split into multiple methods
+        public void LoadFileContent(string dir)
         {
             _correctRootSpecsDir = _resEdit.GetRootSpecsDir();
             _correctRootModulesDir = _resEdit.GetRootModulesDir();
