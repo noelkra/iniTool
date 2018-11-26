@@ -38,8 +38,10 @@ namespace iniTool
             _resEdit = new ResourceEdit();
             SetCorrectValues();
         }
-
-        public void SelectEntityContents() //TODO shorten and split into multiple methods
+        /// <summary>
+        /// Read all entries from the ini-Files
+        /// </summary>
+        public void SelectEntityContents()
         {
             //Get all Directories
             try
@@ -55,11 +57,10 @@ namespace iniTool
             if (_directoryOfFoldersList != null) ReadFileContent(_directoryOfFoldersList);
         }
 
-        public List<EntityContent> GetEntityContents()
-        {
-            return _entityContent;
-        }
-
+        /// <summary>
+        /// Reads the content from the files and calls SetEntityContent to save the values.
+        /// </summary>
+        /// <param name="directoryOfFoldersList">List with the path to the folders</param>
         private void ReadFileContent(IEnumerable<string> directoryOfFoldersList)
         {
             var prefix = _resEdit.GetPrefix();
@@ -99,6 +100,19 @@ namespace iniTool
             }
         }
 
+        /// <summary>
+        /// Creates instances of EntityContent with the values of the files.
+        /// </summary>
+        /// <param name="directory">Directory from the project</param>
+        /// <param name="tempIsChecked">Has to be changed?</param>
+        /// <param name="tempProjectName">Name of the Project</param>
+        /// <param name="tempProjectId">ID of the Project</param>
+        /// <param name="tempProjectGuid">GUID of the Project</param>
+        /// <param name="tempPwProject">PW of the Project</param>
+        /// <param name="tempPwProjectGuid">PW-GUID of the Project</param>
+        /// <param name="tempRootSpecsDir">Root_Specs_Dir of the Project</param>
+        /// <param name="tempRootModulesDir">Root_Modules_Dir of the Project</param>
+        /// <param name="tempModulesIniFile">Modules_Ini_File of the Project</param>
         protected void SetEntityContents(string directory, bool tempIsChecked, string tempProjectName, string tempProjectId,
             string tempProjectGuid, string tempPwProject, string tempPwProjectGuid, string tempRootSpecsDir,
             string tempRootModulesDir, string tempModulesIniFile)
@@ -118,11 +132,36 @@ namespace iniTool
             });
         }
 
+        /// <summary>
+        /// Gets the correct values.
+        /// </summary>
         protected void SetCorrectValues()
         {
             _correctRootSpecsDir = _resEdit.GetRootSpecsDir();
             _correctRootModulesDir = _resEdit.GetRootModulesDir();
             _correctModulesIniFile = _resEdit.GetModulesIniFile();
+        }
+
+        /// <summary>
+        /// Returns the currently saved entities from the files.
+        /// </summary>
+        /// <returns>
+        /// Returns the entityContent list.
+        /// </returns>
+        public List<EntityContent> GetEntityContents()
+        {
+            return _entityContent;
+        }
+
+        /// <summary>
+        /// Returns the paths of the currently incorrect files.
+        /// </summary>
+        /// <returns>
+        /// Returns _incorrectFiles
+        /// </returns>
+        public ArrayList GetIncorrectFilesList()
+        {
+            return _incorrectFiles;
         }
     }
 }
