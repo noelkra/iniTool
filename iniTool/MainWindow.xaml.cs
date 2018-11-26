@@ -64,13 +64,20 @@ namespace iniTool
         }
         public void OpenFiles(string dir)
         {
-            _waitingDialog = null;
-            if (string.IsNullOrEmpty(dir)) return;
+            //initialize a new instance of EntitySelector
+            _entitySelector = new EntitySelector(dir);
+
+            //create a new instance of WaitingDialog
             _waitingDialog = new WaitingDialog();
+            
+            //Test if dir is empty or null and set loading to true
+            if (string.IsNullOrEmpty(dir)) return;
+
+            //Read the files and set them as source of the data grid
             SetLoading(true);
-            _fileHandler.LoadFileContent(dir);
+            _entitySelector.SelectEntityContents();
             DgListFileContent.ItemsSource = null;
-            DgListFileContent.ItemsSource = _fileHandler.GetFileContent();
+            DgListFileContent.ItemsSource = _entitySelector.GetEntityContents();
             SetLoading(false);
         }
         private void SetLoading(bool loading)
