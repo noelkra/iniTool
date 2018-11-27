@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Windows;
 
 namespace iniTool
 {
@@ -12,11 +14,13 @@ namespace iniTool
         private WaitingDialog _waitingDialog;
         private EntitySelector _entitySelector;
         private EntityFixer _entityFixer;
+        private List<EntityContent> _entityContentList;
 
         public MainWindow()
         {
             _dialogHandler = new DialogHandler();
             _resEdit = new ResourceEdit();
+            _entityContentList = new List<EntityContent>();
             InitializeComponent();
         }
 
@@ -80,9 +84,12 @@ namespace iniTool
             //Read the files and set them as source of the data grid
             SetLoading(true);
             _entitySelector.SelectEntityContents();
+            _entityContentList = _entitySelector.GetEntityContents();
+
             DgListFileContent.ItemsSource = null;
-            DgListFileContent.ItemsSource = _entitySelector.GetEntityContents();
-            SetLoading(false);
+            DgListFileContent.ItemsSource = _entityContentList;
+
+             SetLoading(false);
         }
         private void SetLoading(bool loading)
         {
