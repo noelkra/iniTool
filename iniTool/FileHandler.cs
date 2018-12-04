@@ -166,13 +166,7 @@ namespace iniTool
 
         public ArrayList SetCorrectValues(string iniPath, string[] section, string key) //TODO get arrays for section and key to make application dynamic. 
         {
-            /*
-             * This Method should get the path to the Files.
-             * On calling of the method, the section and the keys get read out.
-             * With this information given (assumed that the key and section are related), the content from the
-             * corresponding ini-files gets saved to the correctValueList. This gets returned
-             */
-            //TODO the values should get added to the correctValueList. The return parameters should be iterated with a loop to add them to SetContentList.
+
             var iniHandler = new IniHandler(iniPath);
             ArrayList correctValueList = new ArrayList();
             return correctValueList;

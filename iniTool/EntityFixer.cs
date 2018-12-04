@@ -59,6 +59,13 @@ namespace iniTool
 
         protected void SetCorrectValues()
         {
+            /*
+             * This Method should get the path to the Files.
+             * On calling of the method, the section and the keys get read out.
+             * With this information given (assumed that the key and section are related), the content from the
+             * corresponding ini-files gets saved to the correctValueList. This gets returned
+             */
+            //TODO the values should get added to the correctValueList. The return parameters should be iterated with a loop to add them to SetContentList.
             _correctRootSpecsDir = _resEdit.GetRootSpecsDir();
             _correctRootModulesDir = _resEdit.GetRootModulesDir();
             _correctModulesIniFile = _resEdit.GetModulesIniFile();
