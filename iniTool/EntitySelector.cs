@@ -5,9 +5,9 @@ using System.Windows;
 
 namespace iniTool
 {
-    /*
-     * This class gets all the entities from the ini files needed in the application.
-     */
+    /// <summary>
+    /// This class gets all the entities from the ini files needed in the application.
+    /// </summary>
     internal class EntitySelector
     {
       
@@ -67,11 +67,13 @@ namespace iniTool
             var prefix = _resEdit.GetPrefix();
             foreach (var filepath in directoryOfFoldersList)
             {
+                //Analyzes the Filepath and checks if it contains the prefix selected in the Settings
+                //Prepare the path to the files
                 if (filepath.Substring(_workingDirectory.Length, prefix.Length) != prefix) continue;
                 var projIniHandler = new IniHandler($@"{filepath}\project.ini");
                 var configIniHandler = new IniHandler($@"{filepath}\Config\config.ini");
 
-                //get content form project.ini
+                //Get content from project.ini
                 _tempProjectName = projIniHandler.IniReadValue("GENERAL", "PROJECTNAME");
                 _tempProjectId = projIniHandler.IniReadValue("GENERAL", "PROJECTID");
                 _tempProjectGuid = projIniHandler.IniReadValue("GENERAL", "PROJECTGUID");
@@ -83,7 +85,7 @@ namespace iniTool
                 _tempRootModulesDir = configIniHandler.IniReadValue("System", "Root_Modules_Dir");
                 _tempModulesIniFile = configIniHandler.IniReadValue("System", "Modules_Ini_File");
 
-                //Search for wrong values
+                //Search for wrong values and set the 
                 if (_tempRootSpecsDir != _correctRootSpecsDir || _tempRootModulesDir != _correctRootModulesDir ||
                     _tempModulesIniFile != _correctModulesIniFile) //MODULES INI FILE
                 {

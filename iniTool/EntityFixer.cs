@@ -41,11 +41,12 @@ namespace iniTool
 
                 /*
                  * TODO Check if user wants to correct file
-                 * Maybe take the whole EntityList as parameter so that the User can choose
+                 * Take the whole EntityList as parameter so that the User can choose
                  * which Item to change by clicking on the checkbox.
                  *
                  * [Important]
-                 * Check if value updates on changes to checkbox.IsChecked → Is this value also updated here (static method?)
+                 * Check if value updates on changes to checkbox.IsChecked → Is this value also updated here (maybe use static method?)
+                 * Use UpdateSourceTrigger="OnValueChanged" in MainWindow.xaml
                  */
 
                 if (_tempRootSpecsDir != _correctRootSpecsDir)
