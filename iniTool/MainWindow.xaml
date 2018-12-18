@@ -4,9 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:iniTool"
+        xmlns:userControls="clr-namespace:iniTool.Views"
         x:Class="iniTool.MainWindow"
         mc:Ignorable="d"
-        Title="iniTool" Height="500" Width="1042.667" Icon="img/master.png" WindowStartupLocation="CenterScreen" MinHeight="500" MinWidth="700" Initialized="Window_Loaded">
+        Title="iniTool" Height="500" Width="1042.667" Icon="../Assets/master.png" WindowStartupLocation="CenterScreen" MinHeight="500" MinWidth="700" Initialized="Window_Loaded">
     <Window.TaskbarItemInfo>
         <TaskbarItemInfo Description="iniTool"/>
     </Window.TaskbarItemInfo>
@@ -21,29 +22,29 @@
             </StackPanel.Effect>
             <Button x:Name="BtnMain" Height="{Binding ActualWidth, ElementName=BtnMain}" Width="Auto" BorderBrush="{x:Null}" Foreground="{x:Null}" Style="{DynamicResource FlatUiButton}" Click="BtnMain_Click">
                 <Button.Background>
-                    <ImageBrush ImageSource="img/icons8-home-1024.png"/>
+                    <ImageBrush ImageSource="/Assets/home_light.png"/>
                 </Button.Background>
             </Button>
             <Button x:Name="BtnOpenNewWorkspace" Height="{Binding ActualWidth, ElementName=BtnOpenNewWorkspace}" Style="{DynamicResource FlatUiButton}" Width="Auto" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="BtnOpenNewWorkspace_Click">
                 <Button.Background>
-                    <ImageBrush ImageSource="img/icons8-opened-folder-1024.png"/>
+                    <ImageBrush ImageSource="/Assets/open_light.png"/>
                 </Button.Background>
             </Button>
             <Button x:Name="BtnSettings" Height="{Binding ActualWidth, ElementName=BtnSettings}" Style="{DynamicResource FlatUiButton}" Width="Auto" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="BtnSettings_Click">
                 <Button.Background>
-                    <ImageBrush ImageSource="img/icons8-services-1024.png"/>
+                    <ImageBrush ImageSource="/Assets/settings_light.png"/>
                 </Button.Background>
             </Button>
             <Button x:Name="BtnAbout" Height="{Binding ActualWidth, ElementName=BtnAbout}" Style="{DynamicResource FlatUiButton}" Width="Auto" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="BtnAbout_Click">
                 <Button.Background>
-                    <ImageBrush ImageSource="img/icons8-about-1024.png"/>
+                    <ImageBrush ImageSource="/Assets/about_light.png"/>
                 </Button.Background>
             </Button>
         </StackPanel>
         <Grid x:Name="GridMainData" Grid.Column="1">
             <DataGrid x:Name="DgListFileContent" Margin="10,50,60,90" AlternationCount="2" AutoGenerateColumns="False" CanUserAddRows="false" ItemsSource="{Binding }" MinRowHeight="20" AlternatingRowBackground="LightGray">
                 <DataGrid.Columns>
-                    <DataGridCheckBoxColumn Header="Repair" Binding="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}"/>
+                    <!--<DataGridCheckBoxColumn Header="Repair" Binding="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}"/>-->
                     <DataGridTextColumn Header="Project Name" Binding="{Binding ProjectName}" Width="2.5*" />
                     <DataGridTextColumn Header="ID" Binding="{Binding ProjectId}" Width="1*"/>
                     <DataGridTextColumn Header="GUID" Binding="{Binding ProjectGuid}" Width="3*"/>
@@ -57,7 +58,7 @@
             <Button x:Name="BtnConfirmAction" Content="Confirm Changes" Margin="0,0,55.001,10" VerticalAlignment="Bottom" Style="{DynamicResource FlatUiButton}" Click="btnConfirmAction_Click" Width="150" HorizontalAlignment="Right"/>
             <Label x:Name="LblEditFilesTitle" Content="Edit Files" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top" FontSize="16" />
         </Grid>
-        <local:SettingsUserControl x:Name="UcSettings" Grid.Column="1" Margin="0,0,0,0" Visibility="Hidden"/>
-        <local:AboutUserControl x:Name="UcAbout" Grid.Column="1" Height="Auto" Visibility="Hidden"/>
+        <userControls:SettingsUserControl x:Name="UcSettings" Grid.Column="1" Margin="0,0,0,0" Visibility="Hidden"/>
+        <userControls:AboutUserControl x:Name="UcAbout" Grid.Column="1" Height="Auto" Visibility="Hidden"/>
     </Grid>
 </Window>

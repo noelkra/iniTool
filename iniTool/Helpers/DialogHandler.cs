@@ -1,4 +1,4 @@
-﻿namespace iniTool
+﻿namespace iniTool.helpers
 {
     internal class DialogHandler
     {

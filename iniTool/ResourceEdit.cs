@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows;
-
+using iniTool.helpers;
 namespace iniTool
 {
     internal class ResourceEdit

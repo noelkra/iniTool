@@ -67,7 +67,7 @@
     <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>img\master.ico</ApplicationIcon>
+    <ApplicationIcon>Assets\master.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -94,21 +94,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AboutUserControl.xaml.cs">
+    <Compile Include="Views\AboutUserControl.xaml.cs">
       <DependentUpon>AboutUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="EntityContent.cs" />
     <Compile Include="EntityFixer.cs" />
     <Compile Include="EntitySelector.cs" />
     <Compile Include="ResourceEdit.cs" />
-    <Compile Include="IniHandler.cs" />
-    <Compile Include="SettingsUserControl.xaml.cs">
+    <Compile Include="Helpers\IniHandler.cs" />
+    <Compile Include="Views\SettingsUserControl.xaml.cs">
       <DependentUpon>SettingsUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="WaitingDialog.xaml.cs">
+    <Compile Include="Views\WaitingDialog.xaml.cs">
       <DependentUpon>WaitingDialog.xaml</DependentUpon>
     </Compile>
-    <Page Include="AboutUserControl.xaml">
+    <Page Include="Views\AboutUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -124,16 +124,16 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DialogHandler.cs" />
+    <Compile Include="Helpers\DialogHandler.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="SettingsUserControl.xaml">
+    <Page Include="Views\SettingsUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="WaitingDialog.xaml">
+    <Page Include="Views\WaitingDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -148,11 +148,6 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-    <Resource Include="img\icons8-about-1024.png" />
-    <Resource Include="img\icons8-opened-folder-1024.png" />
-    <Resource Include="img\icons8-services-1024.png" />
-    <Resource Include="img\icons8-home-1024.png" />
-    <Resource Include="img\info.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
@@ -167,14 +162,23 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="img\master.ico" />
-    <Resource Include="img\master.png" />
+    <Resource Include="Assets\master.ico" />
+    <Resource Include="Assets\master.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="img\CardWaiting.png" />
+    <Resource Include="Assets\sign_beta.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="img\sign_beta.png" />
+    <Resource Include="Assets\about_dark.png" />
+    <Resource Include="Assets\about_light.png" />
+    <Resource Include="Assets\card_developer.png" />
+    <Resource Include="Assets\card_loading.png" />
+    <Resource Include="Assets\home_dark.png" />
+    <Resource Include="Assets\home_light.png" />
+    <Resource Include="Assets\open_dark.png" />
+    <Resource Include="Assets\open_light.png" />
+    <Resource Include="Assets\settings_dark.png" />
+    <Resource Include="Assets\settings_light.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

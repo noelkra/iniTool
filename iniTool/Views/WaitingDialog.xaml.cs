@@ -1,4 +1,4 @@
-﻿namespace iniTool
+﻿namespace iniTool.Views
 {
     /// <summary>
     /// Interaction logic for WaitingDialog.xaml

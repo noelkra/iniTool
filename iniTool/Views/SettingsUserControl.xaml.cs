@@ -1,6 +1,7 @@
 ﻿using System.Windows;
+using iniTool.helpers;
 
-namespace iniTool
+namespace iniTool.Views
 {
     /// <summary>
     /// Interaktionslogik für SettingsUserControl.xaml

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Windows;
+using iniTool.helpers;
 
 namespace iniTool
 {

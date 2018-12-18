@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
+using iniTool.helpers;
+using iniTool.Views;
 
 namespace iniTool
 {

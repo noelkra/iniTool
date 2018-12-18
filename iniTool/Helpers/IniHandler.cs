@@ -1,7 +1,7 @@
 ﻿using System.Runtime.InteropServices;
 using System.Text;
 
-namespace iniTool
+namespace iniTool.helpers
 {
     /*  About this class
     *   This class was copied and modified from following Website

@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="iniTool.AboutUserControl"
+﻿<UserControl x:Class="iniTool.Views.AboutUserControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -10,6 +10,6 @@
             <RowDefinition Height="94*"/>
         </Grid.RowDefinitions>
         <TextBlock Margin="140,10,140,0" TextWrapping="Wrap" Grid.Row="1" TextAlignment="Center" FontSize="14" Height="37.24" VerticalAlignment="Top"><Run Text="Licensed under GNU GPLv3."/><LineBreak/><Run Text="Icons by icons8 (www.icons8.com)"/></TextBlock>
-        <Image Height="295" Margin="10,10,10,0" VerticalAlignment="Top" Source="img/info.png" AutomationProperties.Name="imgAbout" Grid.Row="0"/>
+        <Image Height="295" Margin="10,10,10,0" VerticalAlignment="Top" Source="/Assets/card_developer.png" AutomationProperties.Name="imgAbout" Grid.Row="0"/>
     </Grid>
 </UserControl>
