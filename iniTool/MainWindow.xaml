@@ -13,7 +13,7 @@
     </Window.TaskbarItemInfo>
     <Grid Margin="0,0,3.333,0">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*" MaxWidth="70" MinWidth="35"/>
+            <ColumnDefinition Width="1*" MaxWidth="60" MinWidth="35"/>
             <ColumnDefinition Width="20*"/>
         </Grid.ColumnDefinitions>
         <StackPanel x:Name="StSidebar" Grid.Column="0" Background="{DynamicResource Primary.Turquoise}" Height="auto">
@@ -42,7 +42,7 @@
             </Button>
         </StackPanel>
         <Grid x:Name="GridMainData" Grid.Column="1">
-            <DataGrid x:Name="DgListFileContent" Margin="10,50,60,90" AlternationCount="2" AutoGenerateColumns="False" CanUserAddRows="false" ItemsSource="{Binding }" MinRowHeight="20" AlternatingRowBackground="LightGray">
+            <DataGrid x:Name="DgListFileContent" Margin="10,41,41,65" AlternationCount="2" AutoGenerateColumns="False" CanUserAddRows="false" ItemsSource="{Binding }" MinRowHeight="20" AlternatingRowBackground="LightGray">
                 <DataGrid.Columns>
                     <!--<DataGridCheckBoxColumn Header="Repair" Binding="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}"/>-->
                     <DataGridTextColumn Header="Project Name" Binding="{Binding ProjectName}" Width="2.5*" />
@@ -55,8 +55,8 @@
                     <DataGridTextColumn Header="Modules_Ini_File" Binding="{Binding ModulesIniFile}" Width="3*"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <Button x:Name="BtnConfirmAction" Content="Confirm Changes" Margin="0,0,55.001,10" VerticalAlignment="Bottom" Style="{DynamicResource FlatUiButton}" Click="btnConfirmAction_Click" Width="150" HorizontalAlignment="Right"/>
-            <Label x:Name="LblEditFilesTitle" Content="Edit Files" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top" FontSize="16" />
+            <Button x:Name="BtnConfirmAction" Content="Confirm Changes" Margin="0,0,41,10" VerticalAlignment="Bottom" Style="{DynamicResource FlatUiButton}" Click="btnConfirmAction_Click" Width="150" HorizontalAlignment="Right"/>
+            <Label x:Name="LblEditFilesTitle" Content="View Data" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top" FontSize="16" />
         </Grid>
         <userControls:SettingsUserControl x:Name="UcSettings" Grid.Column="1" Margin="0,0,0,0" Visibility="Hidden"/>
         <userControls:AboutUserControl x:Name="UcAbout" Grid.Column="1" Height="Auto" Visibility="Hidden"/>
