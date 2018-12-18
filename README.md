@@ -6,7 +6,7 @@ It searches for specific .ini Files in Folders beginning with a specified prefix
 and checks the content of them if it complies with the given settings. This means that many files can be processed simultaneously.
 
 ### Does it work for me?
-It will! You have to compile it yourself at the moment but it will work.
+It will!
 Please note that this is primary an internal Project so i will first fullfill the requirements given from my company.
 I will extend the program to get more flexible in the near future.
 
