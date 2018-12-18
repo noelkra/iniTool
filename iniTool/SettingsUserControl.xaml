@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d" Width="500" Height="250" Loaded="settingsUserControl_Loaded">
     <Grid>
-        <Label x:Name="LblSettings" Content="Settings" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+        <Label x:Name="LblSettings" Content="Settings" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
         <Label x:Name="LblRootSpecsDir" Content="Root Specs Dir:" Margin="0,30,0,0" Width="150" Style="{DynamicResource FlatUiLabel}"/>
         <Label x:Name="LblRootModulesDir" Content="Root Modules Dir:" Margin="0,60,0,0" Width="150" Style="{DynamicResource FlatUiLabel}"/>
         <Label x:Name="LblModulesIniFile" Content="Modules Ini File:" Margin="0,90,0,0" Width="150" Style="{DynamicResource FlatUiLabel}"/>
