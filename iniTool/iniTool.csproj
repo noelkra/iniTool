@@ -25,9 +25,11 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>false</MapFileExtensions>
+    <SupportUrl>http://www.github.com/noelkra/initool</SupportUrl>
     <TargetCulture>en-CH</TargetCulture>
     <ProductName>iniTool</ProductName>
     <PublisherName>Noël Krähenbühl</PublisherName>
+    <SuiteName>iniTool</SuiteName>
     <ApplicationRevision>3</ApplicationRevision>
     <ApplicationVersion>1.1.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>

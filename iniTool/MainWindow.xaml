@@ -7,7 +7,7 @@
         xmlns:userControls="clr-namespace:iniTool.Views"
         x:Class="iniTool.MainWindow"
         mc:Ignorable="d"
-        Title="iniTool" Height="500" Width="1042.667" Icon="../Assets/master.png" WindowStartupLocation="CenterScreen" MinHeight="500" MinWidth="700" Initialized="Window_Loaded">
+        Title="iniTool" Height="500" Width="1042.667" Icon="/Assets/master.png" WindowStartupLocation="CenterScreen" MinHeight="500" MinWidth="700" Initialized="Window_Loaded">
     <Window.TaskbarItemInfo>
         <TaskbarItemInfo Description="iniTool"/>
     </Window.TaskbarItemInfo>
@@ -44,7 +44,7 @@
         <Grid x:Name="GridMainData" Grid.Column="1">
             <DataGrid x:Name="DgListFileContent" Margin="10,41,41,65" AlternationCount="2" AutoGenerateColumns="False" CanUserAddRows="false" ItemsSource="{Binding }" MinRowHeight="20" AlternatingRowBackground="LightGray">
                 <DataGrid.Columns>
-                    <!--<DataGridCheckBoxColumn Header="Repair" Binding="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}"/>-->
+                    <DataGridCheckBoxColumn Header="Repair" Binding="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}"/>
                     <DataGridTextColumn Header="Project Name" Binding="{Binding ProjectName}" Width="2.5*" />
                     <DataGridTextColumn Header="ID" Binding="{Binding ProjectId}" Width="1*"/>
                     <DataGridTextColumn Header="GUID" Binding="{Binding ProjectGuid}" Width="3*"/>
