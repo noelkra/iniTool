@@ -11,7 +11,6 @@ using System.Windows;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Noël Krähenbühl")]
 [assembly: AssemblyProduct("iniTool")]
-[assembly: AssemblyCopyright("Copyright © Noël Krähenbühl 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
