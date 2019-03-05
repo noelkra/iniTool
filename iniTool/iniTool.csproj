@@ -30,8 +30,8 @@
     <ProductName>iniTool</ProductName>
     <PublisherName>Noël Krähenbühl</PublisherName>
     <SuiteName>iniTool</SuiteName>
-    <ApplicationRevision>3</ApplicationRevision>
-    <ApplicationVersion>1.1.0.%2a</ApplicationVersion>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.2.3.0</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -72,6 +72,14 @@
     <ApplicationIcon>Assets\master.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MaterialDesignColors, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignColors.1.1.2\lib\net45\MaterialDesignColors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MaterialDesignThemes.Wpf, Version=2.5.1.1327, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignThemes.2.5.1-ci1327\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
@@ -114,10 +122,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="FlatUIStyles.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -150,6 +154,7 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
@@ -168,19 +173,8 @@
     <Resource Include="Assets\master.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\sign_beta.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Assets\about_dark.png" />
-    <Resource Include="Assets\about_light.png" />
     <Resource Include="Assets\card_developer.png" />
     <Resource Include="Assets\card_loading.png" />
-    <Resource Include="Assets\home_dark.png" />
-    <Resource Include="Assets\home_light.png" />
-    <Resource Include="Assets\open_dark.png" />
-    <Resource Include="Assets\open_light.png" />
-    <Resource Include="Assets\settings_dark.png" />
-    <Resource Include="Assets\settings_light.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
