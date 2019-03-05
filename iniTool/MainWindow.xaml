@@ -9,8 +9,8 @@
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
         TextElement.FontSize="13"
-        TextOptions.TextFormattingMode="Ideal" 
-        TextOptions.TextRenderingMode="Auto"        
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
         x:Class="iniTool.MainWindow"
@@ -19,38 +19,37 @@
     <Window.TaskbarItemInfo>
         <TaskbarItemInfo Description="iniTool"/>
     </Window.TaskbarItemInfo>
-    <Grid Margin="0,0,3.333,0">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*" MaxWidth="60" MinWidth="35"/>
-            <ColumnDefinition Width="20*"/>
-        </Grid.ColumnDefinitions>
-        <StackPanel x:Name="StSidebar" Grid.Column="0" Background="{DynamicResource Primary.Turquoise}" Height="auto">
-            <StackPanel.Effect>
-                <DropShadowEffect Direction="0" BlurRadius="4" ShadowDepth="3" Color="#FF9D9D9D"/>
-            </StackPanel.Effect>
-            <Button x:Name="BtnMain" Height="{Binding ActualWidth, ElementName=BtnMain}" Width="Auto" BorderBrush="{x:Null}" Foreground="{x:Null}" Style="{DynamicResource FlatUiButton}" Click="BtnMain_Click">
-                <Button.Background>
-                    <ImageBrush ImageSource="/Assets/home_light.png"/>
-                </Button.Background>
-            </Button>
-            <Button x:Name="BtnOpenNewWorkspace" Height="{Binding ActualWidth, ElementName=BtnOpenNewWorkspace}" Style="{DynamicResource FlatUiButton}" Width="Auto" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="BtnOpenNewWorkspace_Click">
-                <Button.Background>
-                    <ImageBrush ImageSource="/Assets/open_light.png"/>
-                </Button.Background>
-            </Button>
-            <Button x:Name="BtnSettings" Height="{Binding ActualWidth, ElementName=BtnSettings}" Style="{DynamicResource FlatUiButton}" Width="Auto" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="BtnSettings_Click">
-                <Button.Background>
-                    <ImageBrush ImageSource="/Assets/settings_light.png"/>
-                </Button.Background>
-            </Button>
-            <Button x:Name="BtnAbout" Height="{Binding ActualWidth, ElementName=BtnAbout}" Style="{DynamicResource FlatUiButton}" Width="Auto" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="BtnAbout_Click">
-                <Button.Background>
-                    <ImageBrush ImageSource="/Assets/about_light.png"/>
-                </Button.Background>
-            </Button>
-        </StackPanel>
-        <Grid x:Name="GridMainData" Grid.Column="1">
-            <DataGrid x:Name="DgListFileContent" Margin="10,41,41,65" AlternationCount="2" AutoGenerateColumns="False" CanUserAddRows="false" ItemsSource="{Binding }" MinRowHeight="20" AlternatingRowBackground="LightGray">
+    <Grid x:Name="topGrid">
+      <ToolBarTray>
+            <ToolBar Style="{DynamicResource MaterialDesignToolBar}" ClipToBounds="False">
+                <Button ToolTip="iniTool on Github" Click="GithubButton_OnClick" >
+                    <materialDesign:PackIcon Kind="GithubBox" />
+                </Button>
+                <Button ToolTip="Open current folder">
+                    <materialDesign:PackIcon Kind="Folder" />
+                </Button>
+              </ToolBar>
+              <!-- Buttons to switch between the contents.-->
+              <ToolBar Style="{DynamicResource MaterialDesignToolBar}" ClipToBounds="False">
+                <ListBox SelectedIndex="0">
+                    <ListBoxItem ToolTip="Home" Selected="BtnMain_Click">
+                        <materialDesign:PackIcon Kind="home"/>
+                    </ListBoxItem>
+                    <ListBoxItem ToolTip="Open new Folder" Selected="BtnOpenNewWorkspace_Click">
+                        <materialDesign:PackIcon Kind="folderplus"/>
+                    </ListBoxItem>
+                    <ListBoxItem ToolTip="Settings" Selected="BtnSettings_Click">
+                        <materialDesign:PackIcon Kind="settings"/>
+                    </ListBoxItem>
+                </ListBox>
+                <Separator/>
+                <Button ToolTip="About this Application" Click="BtnAbout_Click">
+                    <materialDesign:PackIcon Kind="information"/>
+                </Button>
+            </ToolBar>
+        </ToolBarTray>
+        <Grid x:Name="GridMainData">
+            <DataGrid x:Name="DgListFileContent" Margin="10,75,41,65" AlternationCount="2" AutoGenerateColumns="False" CanUserAddRows="false" ItemsSource="{Binding }" MinRowHeight="20" AlternatingRowBackground="LightGray">
                 <DataGrid.Columns>
                     <DataGridCheckBoxColumn Header="Repair" Binding="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}"/>
                     <DataGridTextColumn Header="Project Name" Binding="{Binding ProjectName}" Width="2.5*" />
@@ -63,10 +62,10 @@
                     <DataGridTextColumn Header="Modules_Ini_File" Binding="{Binding ModulesIniFile}" Width="3*"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <Button x:Name="BtnConfirmAction" Content="Confirm Changes" Margin="0,0,41,10" VerticalAlignment="Bottom" Style="{DynamicResource FlatUiButton}" Click="btnConfirmAction_Click" Width="150" HorizontalAlignment="Right"/>
-            <Label x:Name="LblEditFilesTitle" Content="View Data" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top" FontSize="16" />
+            <Button x:Name="BtnConfirmAction" Content="Confirm Changes" Margin="0,0,41,10" VerticalAlignment="Bottom" Style="{DynamicResource MaterialDesignRaisedLightButton}" Click="btnConfirmAction_Click" Width="150" HorizontalAlignment="Right"/>
+
         </Grid>
-        <userControls:SettingsUserControl x:Name="UcSettings" Grid.Column="1" Margin="0,0,0,0" Visibility="Hidden"/>
-        <userControls:AboutUserControl x:Name="UcAbout" Grid.Column="1" Height="Auto" Visibility="Hidden"/>
+        <userControls:SettingsUserControl x:Name="UcSettings" Margin="0,0,0,0" Visibility="Hidden"/>
+        <userControls:AboutUserControl x:Name="UcAbout" Height="Auto" Visibility="Hidden"/>
     </Grid>
 </Window>

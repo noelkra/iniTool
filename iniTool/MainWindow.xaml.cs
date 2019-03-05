@@ -2,6 +2,7 @@
 using System.Windows;
 using iniTool.helpers;
 using iniTool.Views;
+using System.Diagnostics;
 
 namespace iniTool
 {
@@ -23,6 +24,10 @@ namespace iniTool
             _resEdit = new ResourceEdit();
             _entityContentList = new List<EntityContent>();
             InitializeComponent();
+        }
+        private void GithubButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            Process.Start("https://github.com/noelkra/iniTool");
         }
 
         private void BtnAbout_Click(object sender, RoutedEventArgs e)
@@ -78,7 +83,7 @@ namespace iniTool
 
             //create a new instance of WaitingDialog
             _waitingDialog = new WaitingDialog();
-            
+
             //Test if dir is empty or null and set loading to true
             if (string.IsNullOrEmpty(dir)) return;
 
