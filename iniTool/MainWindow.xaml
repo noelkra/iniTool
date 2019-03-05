@@ -65,7 +65,7 @@
                     <DataGridTextColumn Header="Modules_Ini_File" Binding="{Binding ModulesIniFile}" Width="3*"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <Button x:Name="BtnConfirmAction" Content="Confirm Changes" Margin="0,0,41,10" VerticalAlignment="Bottom" Style="{DynamicResource MaterialDesignRaisedLightButton}" Click="btnConfirmAction_Click" Width="150" HorizontalAlignment="Right"/>
+            <Button x:Name="BtnConfirmAction" Content="Confirm Changes" Margin="0,0,41,10" VerticalAlignment="Bottom" Style="{DynamicResource MaterialDesignRaisedButton}" Click="btnConfirmAction_Click" Width="150" HorizontalAlignment="Right"/>
         </Grid>
         <userControls:SettingsUserControl x:Name="UcSettings" Margin="0,0,0,0" Visibility="Hidden"/>
         <userControls:AboutUserControl x:Name="UcAbout" Margin="0,75,0,0" Visibility="Hidden"/>

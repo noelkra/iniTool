@@ -11,6 +11,6 @@
         </Grid.RowDefinitions>
 
         <Image Height="295" Margin="10,10,10,0" VerticalAlignment="Top" Source="/Assets/card_developer.png" AutomationProperties.Name="imgAbout" Grid.Row="0"/>
-        <TextBlock Margin="140,10,140,0" TextWrapping="Wrap" Grid.Row="1" TextAlignment="Center" FontSize="14" Height="37.24" VerticalAlignment="Top"><Run Text="Licensed under GNU GPLv3."/><LineBreak/><Run Text="Icons by icons8 (www.icons8.com)"/></TextBlock>
+        <TextBlock Margin="140,10,140,0" TextWrapping="Wrap" Grid.Row="1" TextAlignment="Center" FontSize="14" Height="37.24" VerticalAlignment="Top"><Run Text="Licensed under GNU GPLv3. | Icons: Apache License 2.0 & SIL Open Font License 1.1"/></TextBlock>
     </Grid>
 </UserControl>
