@@ -3,6 +3,7 @@ using System.Windows;
 using iniTool.helpers;
 using iniTool.Views;
 using System.Diagnostics;
+using System;
 
 namespace iniTool
 {
@@ -29,31 +30,40 @@ namespace iniTool
         {
             Process.Start("https://github.com/noelkra/iniTool");
         }
+        private void SetGridMainVisible(object sender, RoutedEventArgs e)
+        {
+          GridMainData.Visibility = Visibility.Visible;
+        }
+        private void SetGridMainInvisible(object sender, RoutedEventArgs e)
+        {
+          GridMainData.Visibility = Visibility.Hidden;
+        }
+        private void SetUcSettingsVisible(object sender, RoutedEventArgs e)
+        {
+          UcSettings.Visibility = Visibility.Visible;
+        }
+        private void SetUcSettingsInvisible(object sender, RoutedEventArgs e)
+        {
+          UcSettings.Visibility = Visibility.Hidden;
+        }
+        private void SetUcAboutVisible(object sender, RoutedEventArgs e)
+        {
+          UcAbout.Visibility = Visibility.Visible;
+        }
+        private void SetUcAboutInvisible(object sender, RoutedEventArgs e)
+        {
+          UcAbout.Visibility = Visibility.Hidden;
+        }
 
-        private void BtnAbout_Click(object sender, RoutedEventArgs e)
-        {
-            GridMainData.Visibility = Visibility.Hidden;
-            UcSettings.Visibility = Visibility.Hidden;
-            UcAbout.Visibility = Visibility.Visible;
-        }
-        private void BtnSettings_Click(object sender, RoutedEventArgs e)
-        {
-            GridMainData.Visibility = Visibility.Hidden;
-            UcSettings.Visibility = Visibility.Visible;
-            UcAbout.Visibility = Visibility.Hidden;
-        }
-        private void BtnMain_Click(object sender, RoutedEventArgs e)
-        {
-            GridMainData.Visibility = Visibility.Visible;
-            UcSettings.Visibility = Visibility.Hidden;
-            UcAbout.Visibility = Visibility.Hidden;
-        }
         private void BtnOpenNewWorkspace_Click(object sender, RoutedEventArgs e)
         {
             //If folder chosen successfully, save to ini-file
             var dir = _dialogHandler.OpenFolderDialog();
-            _resEdit.SetWorkspace(dir);
-            OpenFiles(dir);
+            if(!String.IsNullOrEmpty(dir))
+            {
+                _resEdit.SetWorkspace(dir);
+                OpenFiles(dir);
+            }
         }
         private void Window_Loaded(object sender, System.EventArgs e)
         {
@@ -70,6 +80,18 @@ namespace iniTool
             //Repair the Files and reload them afterwards.
             _entityFixer.RepairFiles();
             OpenFiles(_resEdit.GetWorkspace());
+        }
+
+        /// <summary>
+        /// Open the current workspace in the explorer.
+        /// </summary>
+        private void btnOpenWorkspace_Click(object sender, RoutedEventArgs e)
+        {
+            string dir = _resEdit.GetWorkspace();
+            if (!String.IsNullOrEmpty(dir))
+            {
+                Process.Start(dir);
+            }
         }
 
         /// <summary>
