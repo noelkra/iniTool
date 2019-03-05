@@ -26,12 +26,16 @@
                 <Button ToolTip="iniTool on Github" Click="GithubButton_OnClick" >
                     <materialDesign:PackIcon Kind="GithubBox" />
                 </Button>
-                <Button ToolTip="Open current folder">
+                <Button ToolTip="Open current folder" Click="btnOpenWorkspace_Click">
                     <materialDesign:PackIcon Kind="Folder" />
                 </Button>
               </ToolBar>
               <!-- Buttons to switch between the contents.-->
               <ToolBar Style="{DynamicResource MaterialDesignToolBar}" ClipToBounds="True">
+                <Button ToolTip="Open new Folder" Click="BtnOpenNewWorkspace_Click">
+                    <materialDesign:PackIcon Kind="folderplus"/>
+                </Button>
+                <Separator/>
                 <ListBox> <!--SelectedIndex="0"-->
                     <ListBoxItem ToolTip="Home" Selected="SetGridMainVisible" Unselected="SetGridMainInvisible">
                         <materialDesign:PackIcon Kind="home"/>
@@ -43,10 +47,7 @@
                         <materialDesign:PackIcon Kind="information"/>
                     </ListBoxItem>
                 </ListBox>
-                <Separator/>
-                <Button ToolTip="Open new Folder" Click="BtnOpenNewWorkspace_Click">
-                    <materialDesign:PackIcon Kind="folderplus"/>
-                </Button>
+
             </ToolBar>
         </ToolBarTray>
         <!-- Grid which shows the currently chosen UserControl-->
