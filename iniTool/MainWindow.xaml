@@ -36,7 +36,7 @@
                     <materialDesign:PackIcon Kind="folderplus"/>
                 </Button>
                 <Separator/>
-                <ListBox> <!--SelectedIndex="0"-->
+                <ListBox x:Name="lsbToolbarControls"> <!--SelectedIndex="0"-->
                     <ListBoxItem ToolTip="Home" Selected="SetGridMainVisible" Unselected="SetGridMainInvisible">
                         <materialDesign:PackIcon Kind="home"/>
                     </ListBoxItem>

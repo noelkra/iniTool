@@ -30,8 +30,8 @@
     <ProductName>iniTool</ProductName>
     <PublisherName>Noël Krähenbühl</PublisherName>
     <SuiteName>iniTool</SuiteName>
-    <ApplicationRevision>3</ApplicationRevision>
-    <ApplicationVersion>1.1.0.%2a</ApplicationVersion>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.2.3.0</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -122,10 +122,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="FlatUIStyles.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -177,19 +173,8 @@
     <Resource Include="Assets\master.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\sign_beta.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Assets\about_dark.png" />
-    <Resource Include="Assets\about_light.png" />
     <Resource Include="Assets\card_developer.png" />
     <Resource Include="Assets\card_loading.png" />
-    <Resource Include="Assets\home_dark.png" />
-    <Resource Include="Assets\home_light.png" />
-    <Resource Include="Assets\open_dark.png" />
-    <Resource Include="Assets\open_light.png" />
-    <Resource Include="Assets\settings_dark.png" />
-    <Resource Include="Assets\settings_light.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

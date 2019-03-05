@@ -71,6 +71,7 @@ namespace iniTool
             {
                 _resEdit.SetDefaultPreferences();
             }
+            lsbToolbarControls.SelectedIndex = 0;
         }
         private void btnConfirmAction_Click(object sender, RoutedEventArgs e)
         {
