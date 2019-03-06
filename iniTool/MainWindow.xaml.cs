@@ -32,34 +32,34 @@ namespace iniTool
         }
         private void SetGridMainVisible(object sender, RoutedEventArgs e)
         {
-          GridMainData.Visibility = Visibility.Visible;
+            GridMainData.Visibility = Visibility.Visible;
         }
         private void SetGridMainInvisible(object sender, RoutedEventArgs e)
         {
-          GridMainData.Visibility = Visibility.Hidden;
+            GridMainData.Visibility = Visibility.Hidden;
         }
         private void SetUcSettingsVisible(object sender, RoutedEventArgs e)
         {
-          UcSettings.Visibility = Visibility.Visible;
+            UcSettings.Visibility = Visibility.Visible;
         }
         private void SetUcSettingsInvisible(object sender, RoutedEventArgs e)
         {
-          UcSettings.Visibility = Visibility.Hidden;
+            UcSettings.Visibility = Visibility.Hidden;
         }
         private void SetUcAboutVisible(object sender, RoutedEventArgs e)
         {
-          UcAbout.Visibility = Visibility.Visible;
+            UcAbout.Visibility = Visibility.Visible;
         }
         private void SetUcAboutInvisible(object sender, RoutedEventArgs e)
         {
-          UcAbout.Visibility = Visibility.Hidden;
+            UcAbout.Visibility = Visibility.Hidden;
         }
 
         private void BtnOpenNewWorkspace_Click(object sender, RoutedEventArgs e)
         {
             //If folder chosen successfully, save to ini-file
             var dir = _dialogHandler.OpenFolderDialog();
-            if(!String.IsNullOrEmpty(dir))
+            if (!String.IsNullOrEmpty(dir))
             {
                 _resEdit.SetWorkspace(dir);
                 OpenFiles(dir);
@@ -118,7 +118,7 @@ namespace iniTool
             DgListFileContent.ItemsSource = null;
             DgListFileContent.ItemsSource = _entityContentList;
 
-             SetLoading(false);
+            SetLoading(false);
         }
         private void SetLoading(bool loading)
         {

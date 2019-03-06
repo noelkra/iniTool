@@ -22,14 +22,6 @@
     <Grid x:Name="topGrid">
       <!-- Toolbar with all needed buttons/icons-->
       <ToolBarTray>
-            <ToolBar Style="{DynamicResource MaterialDesignToolBar}" ClipToBounds="False">
-                <Button ToolTip="iniTool on Github" Click="GithubButton_OnClick" >
-                    <materialDesign:PackIcon Kind="GithubBox" />
-                </Button>
-                <Button ToolTip="Open current folder" Click="btnOpenWorkspace_Click">
-                    <materialDesign:PackIcon Kind="Folder" />
-                </Button>
-              </ToolBar>
               <!-- Buttons to switch between the contents.-->
               <ToolBar Style="{DynamicResource MaterialDesignToolBar}" ClipToBounds="True">
                 <Button ToolTip="Open new Folder" Click="BtnOpenNewWorkspace_Click">
@@ -47,7 +39,14 @@
                         <materialDesign:PackIcon Kind="information"/>
                     </ListBoxItem>
                 </ListBox>
-
+                <ToolBar Style="{DynamicResource MaterialDesignToolBar}" ClipToBounds="False">
+                    <Button ToolTip="iniTool on Github" Click="GithubButton_OnClick" >
+                        <materialDesign:PackIcon Kind="GithubBox" />
+                    </Button>
+                    <Button ToolTip="Open current folder" Click="btnOpenWorkspace_Click">
+                        <materialDesign:PackIcon Kind="Folder" />
+                    </Button>
+                  </ToolBar>
             </ToolBar>
         </ToolBarTray>
         <!-- Grid which shows the currently chosen UserControl-->
